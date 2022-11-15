@@ -1,0 +1,208 @@
+﻿@using tinhphicongchung.com.helper
+@using tinhphicongchung.com.library
+@model ArticleVM
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class="page-body">
+    <div class="container-xl">
+        <div class="row g-2 align-items-center">
+            <div class="col-md-12 ms-auto">
+                <form action="@Url.Action("Index" , "Article", new { Area = "Admin" })" class="form-group row" method="get">
+                    <div class="col-md-3 mb-3">
+                        @Html.TextBoxFor(x => x.Keywords, new { @class = "form-control", placeholder = "Tiêu đề bài viết" })
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        @Html.DropDownListFor(m => m.ReviewStatusId, new SelectList(Model.ReviewStatusList, "ReviewStatusId", "Description", Model.ReviewStatusId).AddDefaultOption("-- Chọn trạng thái --", "0"), new { @class = "form-select select2" })
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <div class="btn-list flex-nowrap">
+                            <button type="submit" class="btn btn-primary btn-search">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="10" cy="10" r="7"></circle>
+                                    <line x1="21" y1="21" x2="15" y2="15"></line>
+                                </svg>
+                                Tìm kiếm
+                            </button>
+                            <a href="javascript:void(0)" data-w="1200" data-url="@Url.Action("Add", "Article", new { Area = "Admin" })" title="Thêm Bài viết" class="btn btn-teal d-sm-inline-block add-form">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                Thêm mới
+                            </a>
+                            <a href="javascript:void(0)" title="Duyệt" class="btn btn-outline-success d-sm-inline-block approved" data-id="@ConstantHelper.ReviewStatusIdApproved">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="2"></circle>
+                                    <path d="M12 19c-4 0 -7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7c-.42 .736 -.858 1.414 -1.311 2.033"></path>
+                                    <path d="M15 19l2 2l4 -4"></path>
+                                </svg>
+                                Duyệt
+                            </a>
+                            <a href="javascript:void(0)" title="Bỏ duyệt" class="btn btn-outline-danger d-sm-inline-block unapproved" data-id="@ConstantHelper.ReviewStatusIdUnApproved">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-eye-off" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <line x1="3" y1="3" x2="21" y2="21"></line>
+                                    <path d="M10.584 10.587a2 2 0 0 0 2.828 2.83"></path>
+                                    <path d="M9.363 5.365a9.466 9.466 0 0 1 2.637 -.365c4 0 7.333 2.333 10 7c-.778 1.361 -1.612 2.524 -2.503 3.488m-2.14 1.861c-1.631 1.1 -3.415 1.651 -5.357 1.651c-4 0 -7.333 -2.333 -10 -7c1.369 -2.395 2.913 -4.175 4.632 -5.341"></path>
+                                </svg>
+                                Bỏ duyệt
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-xl d-flex flex-column justify-content-center">
+        <div class="row row-cards">
+            <div id="table-result" class="col-12">
+                <div class="col">
+                    <div class="page-pretitle">
+                        Danh sách Bài viết
+                        @if (Model.Pagination.RowCount > 0)
+                        {
+                            <span class="text-muted mt-1">(@Model.Pagination.RowCount.ToString("#,###"))</span>
+                        }
+                    </div>
+                </div>
+                <div class="card">
+                    @if (Model.ArticlesList.IsAny())
+                    {
+                        int number = 0;
+                        ReviewStatus reviewStatus = null;
+                        <div class="table-responsive">
+                            <form action="@Url.Action("MultipleAction", "Article", new { Area = "Admin" })" data-ajax="true" data-ajax-begin="app.ajaxEvents.OnBegin" data-ajax-complete="app.ajaxEvents.OnComplete" data-ajax-failure="app.ajaxEvents.OnFailure" data-ajax-method="Post" data-ajax-success="app.ajaxEvents.OnSuccess" method="post" novalidate="novalidate">
+                                @Html.AntiForgeryToken()
+                                @Html.HiddenFor(x => x.ReviewStatusId)
+                                <table class="table table-vcenter card-table">
+                                    <thead>
+                                        <tr>
+                                            <th>STT</th>
+                                            <th>Tiêu đề</th>
+                                            <th>Ảnh</th>
+                                            <th>Trạng thái</th>
+                                            <th>Người tạo</th>
+                                            <th>Người sửa</th>
+                                            <th>Người duyệt</th>
+                                            <th>Thao tác</th>
+                                            <th class="w-1"><input id="select-all" class="form-check-input m-0 align-middle" type="checkbox" title="Chọn tất cả"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (int index = 0; index < Model.ArticlesList.Count; index++)
+                                        {
+                                            if (Model.ReviewStatusList.IsAny())
+                                            {
+                                                reviewStatus = ReviewStatus.Static_Get(Model.ArticlesList[index].ReviewStatusId, Model.ReviewStatusList);
+                                            }
+                                            number = index + (Model.Pagination.PageIndex > 0 ? Model.Pagination.PageIndex - 1 : Model.Pagination.PageIndex) * Model.Pagination.PageSize + 1;
+                                            <tr>
+                                                <td class="text-muted">@number.ToString("#,###")</td>
+                                                @if (Model.ArticlesList[index].ReviewStatusId == ConstantHelper.ReviewStatusIdApproved)
+                                                {
+                                                    <td><a href="@Model.ArticlesList[index].ArticleUrl.GetUrl()" title="@Model.ArticlesList[index].Title.GetTitle()" target="_blank">@Model.ArticlesList[index].Title</a></td>
+                                                }
+                                                else
+                                                {
+                                                    <td>@Model.ArticlesList[index].Title</td>
+                                                }
+                                                <td>
+                                                    <div class="col-auto">
+                                                        <span class="avatar" style="background-image: url(@Model.ArticlesList[index].ImagePath.GetImageUrl_Mobile())"></span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    @if (reviewStatus != null && !string.IsNullOrWhiteSpace(reviewStatus.Name))
+                                                    {
+                                                        <span class="badge @reviewStatus.ReviewStatusId.ReviewStatusBootstrap()">@reviewStatus.Name</span>
+                                                    }
+                                                </td>
+                                                <td class="text-muted">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="text-truncate">
+                                                                <strong>@Model.ArticlesList[index].CreatedBy</strong>
+                                                            </div>
+                                                            <div class="text-muted">@Model.ArticlesList[index].CrDateTime.TimeAgo()</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-muted">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="text-truncate">
+                                                                <strong>@Model.ArticlesList[index].UpdatedBy</strong>
+                                                            </div>
+                                                            <div class="text-muted">@Model.ArticlesList[index].UpdDateTime.TimeAgo()</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="text-muted">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="text-truncate">
+                                                                <strong>@Model.ArticlesList[index].ReviewedBy</strong>
+                                                            </div>
+                                                            <div class="text-muted">@Model.ArticlesList[index].RevDateTime.TimeAgo()</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-list flex-nowrap">
+                                                        <a href="javascript:void(0)" class="edit-form" title="@string.Format("Cập nhật bài viết {0}", Model.ArticlesList[index].Title)" data-w="1200" data-url="@Url.Action("Edit", "Article", new { Area = "Admin", ArticleId = Model.ArticlesList[index].ArticleId })">
+                                                            <span class="nav-link-icon d-md-none d-lg-inline-block">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                    <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                                                                    <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                                                                    <path d="M16 5l3 3"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </a>
+                                                        <a href="javascript:void(0)" class="delete-item" data-url="@Url.Action("Erase", "Article", new { Area = "Admin", ArticleId = Model.ArticlesList[index].ArticleId })" title="@string.Format("Xóa bài viết {0}", Model.ArticlesList[index].Title)">
+                                                            <span class="nav-link-icon d-md-none d-lg-inline-block text-danger">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                                    <line x1="4" y1="7" x2="20" y2="7"></line>
+                                                                    <line x1="10" y1="11" x2="10" y2="17"></line>
+                                                                    <line x1="14" y1="11" x2="14" y2="17"></line>
+                                                                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                                                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                                                </svg>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <input name="ArticleId" class="form-check-input m-0 align-middle checkbox-select" type="checkbox" value="@Model.ArticlesList[index].ArticleId" />
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </form>
+                            @Html.Partial("PartialPagination", Model.Pagination)
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="col-12">
+                            <div class="card card-md">
+                                <div class="card-body">
+                                    <div class="row align-items-center">
+                                        <div class="col-10">
+                                            <div class="text-muted">
+                                                Không tìm thấy Bài viết phù hợp.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

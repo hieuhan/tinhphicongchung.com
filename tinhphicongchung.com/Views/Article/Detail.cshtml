@@ -1,0 +1,16 @@
+﻿@model ArticleVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main-content">
+    <div class="bread-crumb">
+        <a href="/" title="Trang chủ">Trang chủ</a>
+        <a href="@Model.Articles.ArticleUrl.GetUrl()" title="@Model.Articles.Title.GetTitle()">@Model.Articles.Title</a>
+    </div>
+    <div class="section-header">
+        <h1>@Html.Raw(Model.Articles.MetaTitle)</h1>
+    </div>
+    <article class="section section-shadow entry-art">
+        @Html.Raw(Model.Articles.ArticleContent)
+    </article>
+</div>

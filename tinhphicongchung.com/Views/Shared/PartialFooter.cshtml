@@ -1,0 +1,107 @@
+﻿@using tinhphicongchung.com.library
+@using tinhphicongchung.com.Models
+@model BaseViewModel
+@{
+    List<MenuItems> parentMenuItems = null, menuItemsList = null;
+    if (Model.MenuItemsList.IsAny())
+    {
+        parentMenuItems = Model.MenuItemsList.FindAll(x => x.MenuId == 1002 && x.ParentId == 0);
+    }
+}
+<footer class="footer">
+    <div class="main-footer">
+        <div class="footer-col1">
+            <a class="maps" href="https://congchungnguyenhue.com/lien-he.html"><img src="/assets/images/google-maps.jpg" alt="google map" /></a>
+            <div class="section-content">
+                <p>
+                    <a href="https://g.page/CongChungNguyenHue?share" class="btn-primary" style="display: block;background: cadetblue;margin: 5px 0;height: 36px;line-height: 36px;text-align: center;text-transform: uppercase;color: #fff !important;font-size: 16px;">Xem đường đi</a>
+                </p>
+                <p>
+                    <a href="https://www.congchungnguyenhue.com/phi-cong-chung.html" class="btn-primary" style="display: block;background: tomato;margin: 5px 0;height: 36px;line-height: 36px;text-align: center;text-transform: uppercase;color: #fff !important;font-size: 16px;">Phí công chứng</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-col2">
+            @if (Model.Pages != null)
+            {
+                if (!string.IsNullOrWhiteSpace(Model.Pages.Name))
+                {
+                    <div class="footer-title">@Model.Pages.Name</div>
+                }
+                <div class="adress">
+                    @if (!string.IsNullOrWhiteSpace(Model.Pages.Address))
+                    {
+                        <p>Địa chỉ: @Model.Pages.Address </p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Pages.Hotline1) && !string.IsNullOrWhiteSpace(Model.Pages.Hotline2))
+                    {
+                        <p>Hotline: @Model.Pages.Hotline1 - @Model.Pages.Hotline2</p>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(Model.Pages.Hotline1))
+                    {
+                        <p>Hotline: @Model.Pages.Hotline1</p>
+                    }
+                    else if (!string.IsNullOrWhiteSpace(Model.Pages.Hotline2))
+                    {
+                        <p>Hotline: @Model.Pages.Hotline2</p>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Pages.Email))
+                    {
+                        <p>Email: @Model.Pages.Email </p>
+                    }
+                </div>
+                if (!string.IsNullOrWhiteSpace(Model.Pages.SeoFooter))
+                {
+                    @Html.Raw(Model.Pages.SeoFooter)
+                }
+                <div class="post-social">
+                    @if (!string.IsNullOrWhiteSpace(Model.Pages.Facebook))
+                    {
+                        <a href="@Model.Pages.Facebook" target="_blank" rel="nofollow"><span class="icon-social2 facebook"><i class="fa fa-facebook"></i></span></a>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Pages.Twitter))
+                    {
+                        <a href="@Model.Pages.Twitter" target="_blank" rel="nofollow"><span class="icon-social2 twitter"><i class="fa fa-twitter"></i></span></a>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Pages.LinkedIn))
+                    {
+                        <a href="@Model.Pages.LinkedIn" target="_blank" rel="nofollow"><span class="icon-social2 linkedin"><i class="fa fa-linkedin"></i></span></a>
+                    }
+                    @if (!string.IsNullOrWhiteSpace(Model.Pages.Youtube))
+                    {
+                        <a href="@Model.Pages.Youtube" target="_blank" rel="nofollow"><span class="icon-social2 youtube"><i class="fa fa-youtube"></i></span></a>
+                    }
+                </div>
+            }
+        </div>
+        <div class="footer-col3">
+            <div class="footer-title">Danh mục</div>
+            <div class="footer-content">
+                @if (parentMenuItems.IsAny())
+                {
+                    foreach (var parentItem in parentMenuItems)
+                    {
+                        menuItemsList = Model.MenuItemsList.FindAll(x => x.ParentId == parentItem.MenuItemId);
+                        if (menuItemsList.IsAny())
+                        {
+                            <ul class="nav-c3">
+                                @foreach (var item in menuItemsList)
+                                {
+                                    <li><a href="@item.Path.GetUrl()" title="@item.Name.GetTitle()">@item.Name</a></li>
+                                }
+                            </ul>
+                        }
+                    }
+                }
+            </div>
+            <div class="thongke-pc">
+                THỐNG KÊ
+                @if (Model.HitCounter != null)
+                {
+                    <p>Lượt truy cập: @Model.HitCounter.Value.ToString("#,###")</p>
+                }
+                <p>Đang online: @Model.VisitorOnline.ToString("#,###")</p>
+            </div>
+        </div>
+    </div>
+</footer>

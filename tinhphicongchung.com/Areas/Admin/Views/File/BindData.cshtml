@@ -1,0 +1,48 @@
+﻿@using tinhphicongchung.com.helper
+@using tinhphicongchung.com.library
+@model FileVM
+@if (Model.FilesList.IsAny())
+{
+    foreach (var item in Model.FilesList)
+    {
+        <div class="col-6 col-sm-2">
+            @if (!string.IsNullOrWhiteSpace(Model.ViewType) && Model.ViewType.ToLower().Trim().Equals("editor"))
+            {
+                <div class="card card-sm">
+                    <a href="javascript:void(0)" class="editor-selected-file" title="Chọn ảnh">
+                        <img src="@item.Path.GetImageUrl_Mobile()" alt="@item.Name" class="card-img-top" />
+                    </a>
+                    <div class="text-center truncate" title="@item.Name">@item.Name</div>
+                    <div class="text-gray-600 text-center">@item.FileSize.GetSizeString()</div>
+                </div>
+            }
+            else
+            {
+                <div class="card card-sm">
+                    <a href="javascript:void(0)" class="selected-file" title="Chọn ảnh">
+                        <img src="@item.Path.GetImageUrl_Mobile()" alt="@item.Name" class="card-img-top" />
+                    </a>
+                    <div class="text-center truncate" title="@item.Name">@item.Name</div>
+                    <div class="text-gray-600 text-center">@item.FileSize.GetSizeString()</div>
+                </div>
+            }
+        </div>
+    }
+    @Html.Partial("PartialPaginationAjax", Model.Pagination)
+}
+else
+{
+    <div class="col-12">
+        <div class="card card-md">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-10">
+                        <div class="text-muted">
+                            Không tìm thấy dữ liệu phù hợp.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

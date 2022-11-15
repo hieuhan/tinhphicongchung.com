@@ -1,0 +1,1414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{61D4F990-9395-4677-99D5-07A826836069}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>tinhphicongchung.com</RootNamespace>
+    <AssemblyName>tinhphicongchung.com</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44382</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=3.5.0.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.3.5.0\lib\net472\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ActionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AjaxController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ApartmentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ConstructionLevelController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DepreciationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DistrictController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ErrorController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LandController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LocationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LocationTypeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MenuItemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProvinceController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleActionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SeoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SharedController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StreetController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VehicleDepreciationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VehicleRegistrationYearController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VehicleTypeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\WardsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\YearBuiltController.cs" />
+    <Compile Include="Areas\Admin\Models\ActionsVM.cs" />
+    <Compile Include="Areas\Admin\Models\ApartmentVM.cs" />
+    <Compile Include="Areas\Admin\Models\ArticleVM.cs" />
+    <Compile Include="Areas\Admin\Models\BaseViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\ConstructionLevelVM.cs" />
+    <Compile Include="Areas\Admin\Models\DepreciationVM.cs" />
+    <Compile Include="Areas\Admin\Models\DistrictVM.cs" />
+    <Compile Include="Areas\Admin\Models\FileVM.cs" />
+    <Compile Include="Areas\Admin\Models\HeaderVM.cs" />
+    <Compile Include="Areas\Admin\Models\LandVM.cs" />
+    <Compile Include="Areas\Admin\Models\LocationTypeVM.cs" />
+    <Compile Include="Areas\Admin\Models\LocationVM.cs" />
+    <Compile Include="Areas\Admin\Models\MenuItemVM.cs" />
+    <Compile Include="Areas\Admin\Models\MenuVM.cs" />
+    <Compile Include="Areas\Admin\Models\ObjectJsonVM.cs" />
+    <Compile Include="Areas\Admin\Models\PageVM.cs" />
+    <Compile Include="Areas\Admin\Models\PaginationVM.cs" />
+    <Compile Include="Areas\Admin\Models\ProvinceVM.cs" />
+    <Compile Include="Areas\Admin\Models\RoleActionVM.cs" />
+    <Compile Include="Areas\Admin\Models\RoleVM.cs" />
+    <Compile Include="Areas\Admin\Models\SeoVM.cs" />
+    <Compile Include="Areas\Admin\Models\StreetVM.cs" />
+    <Compile Include="Areas\Admin\Models\UserVM.cs" />
+    <Compile Include="Areas\Admin\Models\VehicleDepreciationVM.cs" />
+    <Compile Include="Areas\Admin\Models\VehicleRegistrationYearVM.cs" />
+    <Compile Include="Areas\Admin\Models\VehicleTypeVM.cs" />
+    <Compile Include="Areas\Admin\Models\WardVM.cs" />
+    <Compile Include="Areas\Admin\Models\YearBuiltVM.cs" />
+    <Compile Include="Areas\Admin\Services\Attributes\AllowFileExtensionsAttribute.cs" />
+    <Compile Include="Areas\Admin\Services\Attributes\AllowFileSizeAttribute.cs" />
+    <Compile Include="Areas\Admin\Services\Attributes\AuthorizeRoleAttribute.cs" />
+    <Compile Include="Areas\Admin\Services\Attributes\HandleLogErrorAttribute.cs" />
+    <Compile Include="Areas\Admin\Services\Attributes\MyAuthTicketAttribute.cs" />
+    <Compile Include="Areas\Admin\Services\Extensions\AppExtensions.cs" />
+    <Compile Include="Areas\Admin\Services\Extensions\ControllerExtensions.cs" />
+    <Compile Include="Areas\Admin\Services\Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Areas\Admin\Services\Sercurity\MyPrincipal.cs" />
+    <Compile Include="Areas\Admin\Services\Sercurity\MyUserViewPage.cs" />
+    <Compile Include="Areas\Admin\Services\Sercurity\UserSerializer.cs" />
+    <Compile Include="Areas\Admin\Services\ToastrNotifications\Toastr.cs" />
+    <Compile Include="Areas\Admin\Services\ToastrNotifications\ToastrService.cs" />
+    <Compile Include="Areas\Admin\Services\ToastrNotifications\ToastrTypes.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotarizationFeeController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ArticleVM.cs" />
+    <Compile Include="Models\BaseViewModel.cs" />
+    <Compile Include="Models\CacheVM.cs" />
+    <Compile Include="Models\CapitalContributionContractVM.cs" />
+    <Compile Include="Models\ContractAmendmentsAndSupplementsVM.cs" />
+    <Compile Include="Models\ContractCapitalContributionByApartmentVM.cs" />
+    <Compile Include="Models\ContractCapitalContributionByHouseLandVM.cs" />
+    <Compile Include="Models\ContractCapitalContributionByLandUseRightVM.cs" />
+    <Compile Include="Models\ContractDivisionLandUseRightVM.cs" />
+    <Compile Include="Models\ContractDonationApartmentVM.cs" />
+    <Compile Include="Models\ContractDonationHouseLandVM.cs" />
+    <Compile Include="Models\ContractDonationLandUseRightVM.cs" />
+    <Compile Include="Models\ContractSaleHouseAndTransferLandUseRightVM.cs" />
+    <Compile Include="Models\DepositContractVM.cs" />
+    <Compile Include="Models\DocumentDivideInheritanceApartmentVM.cs" />
+    <Compile Include="Models\DocumentDivisionInheritanceHouseLandVM.cs" />
+    <Compile Include="Models\DocumentDivisionInheritanceLandUseRightVM.cs" />
+    <Compile Include="Models\EconomicCommercialInvestmentBusinessContractVM.cs" />
+    <Compile Include="Models\FooterVM.cs" />
+    <Compile Include="Models\HeaderVM.cs" />
+    <Compile Include="Models\HomeVM.cs" />
+    <Compile Include="Models\HouseLandSeparationContractVM.cs" />
+    <Compile Include="Models\HouseLeaseContractVM.cs" />
+    <Compile Include="Models\LandUseRightTransferContractVM.cs" />
+    <Compile Include="Models\LoanContractVM.cs" />
+    <Compile Include="Models\MortgageContractVM.cs" />
+    <Compile Include="Models\ObjectJsonVM.cs" />
+    <Compile Include="Models\PurchaseAndSaleApartmentContractVM.cs" />
+    <Compile Include="Models\VehicleSalesContractVM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\SchedulerService.cs" />
+    <Compile Include="Services\TaskService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Assets\css\app.css" />
+    <Content Include="Areas\Admin\Assets\css\app.min.css" />
+    <Content Include="Areas\Admin\Assets\css\demo.rtl.css" />
+    <Content Include="Areas\Admin\Assets\css\demo.rtl.min.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-flags.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-flags.min.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-flags.rtl.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-flags.rtl.min.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-payments.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-payments.min.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-payments.rtl.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-payments.rtl.min.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-vendors.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-vendors.min.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-vendors.rtl.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler-vendors.rtl.min.css" />
+    <Content Include="Areas\Admin\Assets\css\tinhphicongchung.css" />
+    <Content Include="Areas\Admin\Assets\css\tinhphicongchung.min.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler.rtl.css" />
+    <Content Include="Areas\Admin\Assets\css\tabler.rtl.min.css" />
+    <Content Include="Areas\Admin\Assets\js\app.js" />
+    <Content Include="Areas\Admin\Assets\js\init.js" />
+    <Content Include="Areas\Admin\Assets\js\init.min.js" />
+    <Content Include="Areas\Admin\Assets\js\tabler.esm.js" />
+    <Content Include="Areas\Admin\Assets\js\tabler.esm.min.js" />
+    <Content Include="Areas\Admin\Assets\js\tinhphicongchung.js" />
+    <Content Include="Areas\Admin\Assets\js\tinhphicongchung.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\adapters\jquery.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\build-config.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\ckeditor.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\config.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\contents.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\af.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\ar.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\az.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\bg.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\bn.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\bs.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\ca.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\cs.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\cy.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\da.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\de-ch.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\de.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\el.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\en-au.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\en-ca.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\en-gb.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\en.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\eo.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\es-mx.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\es.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\et.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\eu.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\fa.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\fi.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\fo.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\fr-ca.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\fr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\gl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\gu.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\he.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\hi.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\hr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\hu.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\id.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\is.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\it.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\ja.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\ka.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\km.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\ko.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\ku.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\lt.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\lv.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\mk.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\mn.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\ms.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\nb.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\nl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\no.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\oc.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\pl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\pt-br.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\pt.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\ro.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\ru.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\si.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\sk.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\sl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\sq.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\sr-latn.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\sr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\sv.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\th.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\tr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\tt.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\ug.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\uk.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\vi.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\zh-cn.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\lang\zh.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\az.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\bg.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\ca.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\cs.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\cy.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\da.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\de-ch.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\de.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\el.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\en-au.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\en-gb.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\en.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\eo.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\es-mx.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\es.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\et.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\eu.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\fa.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\fi.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\fo.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\fr-ca.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\fr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\gl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\gu.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\he.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\hi.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\hr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\hu.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\id.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\it.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\ja.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\km.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\ko.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\ku.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\lt.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\lv.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\mk.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\mn.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\nb.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\nl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\no.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\oc.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\pl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\pt-br.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\pt.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\ro.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\ru.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\si.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\sk.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\sl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\sq.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\sr-latn.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\sr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\sv.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\th.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\tr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\tt.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\ug.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\uk.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\vi.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\zh-cn.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\zh.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\a11yhelp\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\about\dialogs\hidpi\logo_ckeditor.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\dialog\styles\dialog.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\icons.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\pastefromgdocs\filter\default.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\pastefromlibreoffice\filter\default.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\pastetools\filter\common.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\pastetools\filter\image.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\scayt\dialogs\dialog.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\scayt\skins\moono-lisa\scayt.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\az.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\oc.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\ro.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\sr-latn.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\sr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\tableselection\styles\tableselection.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\widget\images\handle.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\css\samples.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\img\github-top.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\img\header-bg.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\img\header-separator.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\img\logo.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\img\logo.svg" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\img\navigation-tip.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\index.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\js\sample.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\js\sf.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\ajax.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\api.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\appendto.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\assets\inlineall\logo.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\assets\outputxhtml\outputxhtml.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\assets\sample.jpg" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\assets\uilanguages\languages.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\datafiltering.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\dialog\assets\my_dialog.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\dialog\dialog.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\divreplace.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\enterkey\enterkey.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\htmlwriter\outputhtml.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\index.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\inlineall.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\inlinebycode.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\inlinetextarea.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\jquery.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\magicline\magicline.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\readonly.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\replacebyclass.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\replacebycode.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\sample.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\sample.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\tabindex.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\toolbar\toolbar.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\uicolor.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\uilanguages.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\wysiwygarea\fullpage.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\xhtmlstyle.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\css\fontello.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\font\fontello.svg" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\font\LICENSE.txt" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\index.html" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\js\abstracttoolbarmodifier.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\js\fulltoolbareditor.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\js\toolbarmodifier.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\js\toolbartextmodifier.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\lib\codemirror\codemirror.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\lib\codemirror\javascript.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\lib\codemirror\neo.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\lib\codemirror\show-hint.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\dialog.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\dialog_ie.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\dialog_ie8.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\dialog_iequirks.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\editor.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\editor_gecko.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\editor_ie.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\editor_ie8.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\editor_iequirks.css" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\icons.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\icons_hidpi.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\images\arrow.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\images\close.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\images\hidpi\close.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\images\hidpi\lock-open.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\images\hidpi\lock.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\images\hidpi\refresh.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\images\lock-open.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\images\lock.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\images\refresh.png" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\images\spinner.gif" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\styles.js" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\vendor\promise.js" />
+    <Content Include="Areas\Admin\Assets\libs\dropzone\dist\basic.css" />
+    <Content Include="Areas\Admin\Assets\libs\dropzone\dist\dropzone-min.js" />
+    <Content Include="Areas\Admin\Assets\libs\dropzone\dist\dropzone.css" />
+    <Content Include="Areas\Admin\Assets\libs\dropzone\dist\dropzone.js" />
+    <Content Include="Areas\Admin\Assets\libs\jquery-ajax-unobtrusive\jquery.unobtrusive-ajax.js" />
+    <Content Include="Areas\Admin\Assets\libs\jquery-ajax-unobtrusive\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\jquery-validate\jquery.validate.js" />
+    <Content Include="Areas\Admin\Assets\libs\jquery-validate\jquery.validate.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="Areas\Admin\Assets\libs\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\jquery\jquery.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\select2\select2.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\select2\select2.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\icons\default\icons.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\icons\default\icons.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\icons\default\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\langs\vi.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\license.txt" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\models\dom\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\models\dom\model.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\models\dom\model.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\advlist\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\advlist\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\anchor\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\anchor\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\autolink\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\autolink\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\autoresize\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\autoresize\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\autosave\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\autosave\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\charmap\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\charmap\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\codesample\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\codesample\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\code\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\code\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\directionality\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\directionality\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\emoticons\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\emoticons\js\emojiimages.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\emoticons\js\emojiimages.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\emoticons\js\emojis.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\emoticons\js\emojis.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\emoticons\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\fullscreen\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\fullscreen\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\help\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\help\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\help\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\image\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\image\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\importcss\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\importcss\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\insertdatetime\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\insertdatetime\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\link\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\link\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\lists\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\lists\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\media\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\media\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\nonbreaking\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\nonbreaking\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\pagebreak\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\pagebreak\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\preview\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\preview\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\quickbars\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\quickbars\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\quickbars\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\save\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\save\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\searchreplace\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\searchreplace\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\table\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\table\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\template\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\template\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\visualblocks\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\visualblocks\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\visualchars\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\visualchars\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\wordcount\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\wordcount\plugin.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\dark\content.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\dark\content.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\default\content.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\default\content.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\document\content.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\document\content.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\tinymce-5-dark\content.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\tinymce-5-dark\content.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\tinymce-5\content.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\tinymce-5\content.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\writer\content.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\content\writer\content.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide-dark\content.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide-dark\content.inline.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide-dark\content.inline.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide-dark\content.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide-dark\skin.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide-dark\skin.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide-dark\skin.shadowdom.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide-dark\skin.shadowdom.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide\content.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide\content.inline.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide\content.inline.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide\content.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide\skin.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide\skin.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide\skin.shadowdom.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\oxide\skin.shadowdom.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5-dark\content.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5-dark\content.inline.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5-dark\content.inline.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5-dark\content.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5-dark\skin.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5-dark\skin.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5-dark\skin.shadowdom.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5\content.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5\content.inline.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5\content.inline.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5\content.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5\skin.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5\skin.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5\skin.shadowdom.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\skins\ui\tinymce-5\skin.shadowdom.min.css" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\themes\silver\index.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\themes\silver\theme.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\themes\silver\theme.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\tinymce.js" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\tinymce.min.js" />
+    <Content Include="Areas\Admin\Assets\libs\toastr\toastr.css" />
+    <Content Include="Areas\Admin\Assets\libs\toastr\toastr.js" />
+    <Content Include="Assets\css\main.css" />
+    <Content Include="Assets\fonts\font.css" />
+    <Content Include="Assets\fonts\icons-fonts\awesome-icons.css" />
+    <Content Include="Assets\fonts\icons-fonts\awesome-icons.html" />
+    <Content Include="Assets\fonts\icons-fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\fonts\icons-fonts\roboto.css" />
+    <Content Include="Assets\images\ajax-loader.gif" />
+    <Content Include="Assets\images\arrow.gif" />
+    <Content Include="Assets\images\asp-net.png" />
+    <Content Include="Assets\images\bg_b.gif" />
+    <Content Include="Assets\images\bk_DangKyTour.jpg" />
+    <Content Include="Assets\images\blog.png" />
+    <Content Include="Assets\images\bx_loader.gif" />
+    <Content Include="Assets\images\call.png" />
+    <Content Include="Assets\images\cancel.png" />
+    <Content Include="Assets\images\Check.gif" />
+    <Content Include="Assets\images\controls.png" />
+    <Content Include="Assets\images\delete.gif" />
+    <Content Include="Assets\images\discount.jpg" />
+    <Content Include="Assets\images\download.png" />
+    <Content Include="Assets\images\eleven.png" />
+    <Content Include="Assets\images\email - Copy.jpg" />
+    <Content Include="Assets\images\email.jpg" />
+    <Content Include="Assets\images\email.png" />
+    <Content Include="Assets\images\email1.jpg" />
+    <Content Include="Assets\images\facebook.png" />
+    <Content Include="Assets\images\favicon-16x16.png" />
+    <Content Include="Assets\images\favicon-192x192.png" />
+    <Content Include="Assets\images\favicon-32x32.png" />
+    <Content Include="Assets\images\favicon-96x96.png" />
+    <Content Include="Assets\images\favicon.ico" />
+    <Content Include="Assets\images\favicon.png" />
+    <Content Include="Assets\images\fileattachment.png" />
+    <Content Include="Assets\images\fileattachmentsm.png" />
+    <Content Include="Assets\images\forum.png" />
+    <Content Include="Assets\images\giay-chung-nhan.jpg" />
+    <Content Include="Assets\images\giay-chung-nhan1.jpg" />
+    <Content Include="Assets\images\globe.png" />
+    <Content Include="Assets\images\google-maps.jpg" />
+    <Content Include="Assets\images\hot.gif" />
+    <Content Include="Assets\images\icon-block.png" />
+    <Content Include="Assets\images\icon-nt.png" />
+    <Content Include="Assets\images\iconexel.png" />
+    <Content Include="Assets\images\IconFeature\60-nam-dien-bien.png" />
+    <Content Include="Assets\images\IconFeature\bien-dao.png" />
+    <Content Include="Assets\images\IconFeature\davis-cup-.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-bien.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-cham.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-hoi-cho.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-lan-bien.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-le-hoi.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-mua-hoa.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-sinh-thai.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-tam-linh.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-the-thao.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-trang-mat.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-vi-moi-truong.png" />
+    <Content Include="Assets\images\IconFeature\du-lich-xanh-go-green.png" />
+    <Content Include="Assets\images\IconFeature\festival-don-ca-tai-tu.png" />
+    <Content Include="Assets\images\IconFeature\festival-hue.png" />
+    <Content Include="Assets\images\IconFeature\hanh-huong-.png" />
+    <Content Include="Assets\images\IconFeature\lien-tuyen.png" />
+    <Content Include="Assets\images\IconFeature\mua-hoa-ban.png" />
+    <Content Include="Assets\images\IconFeature\mua-hoa-tam-giac-mach.png" />
+    <Content Include="Assets\images\IconFeature\mua-thu.png" />
+    <Content Include="Assets\images\IconFeature\tay-nam-bo-.png" />
+    <Content Include="Assets\images\IconFeature\tay-nguyen-.png" />
+    <Content Include="Assets\images\image001.jpg" />
+    <Content Include="Assets\images\image002.jpg" />
+    <Content Include="Assets\images\image003.jpg" />
+    <Content Include="Assets\images\image004.jpg" />
+    <Content Include="Assets\images\image005.jpg" />
+    <Content Include="Assets\images\image006.jpg" />
+    <Content Include="Assets\images\image007.jpg" />
+    <Content Include="Assets\images\image008.jpg" />
+    <Content Include="Assets\images\imghome.png" />
+    <Content Include="Assets\images\knowledge-base.png" />
+    <Content Include="Assets\images\linkedin.png" />
+    <Content Include="Assets\images\logo.png" />
+    <Content Include="Assets\images\logo.svg" />
+    <Content Include="Assets\images\messenger.png" />
+    <Content Include="Assets\images\new.png" />
+    <Content Include="Assets\images\newemail.png" />
+    <Content Include="Assets\images\newgif.png" />
+    <Content Include="Assets\images\no-image.png" />
+    <Content Include="Assets\images\NoImages.jpg" />
+    <Content Include="Assets\images\ok.png" />
+    <Content Include="Assets\images\opinion.png" />
+    <Content Include="Assets\images\php.png" />
+    <Content Include="Assets\images\top_close.png" />
+    <Content Include="Assets\images\top_open.png" />
+    <Content Include="Assets\images\tour-email.png.jpg" />
+    <Content Include="Assets\images\tour-print.png.jpg" />
+    <Content Include="Assets\images\twitter.png" />
+    <Content Include="Assets\images\up.png" />
+    <Content Include="Assets\images\warning.png" />
+    <Content Include="Assets\images\zalo.png" />
+    <Content Include="Assets\js\app.js" />
+    <Content Include="Assets\js\navigation.js" />
+    <Content Include="Assets\libs\bootstrap\bootstrap.css" />
+    <Content Include="Assets\libs\bootstrap\bootstrap.min.css" />
+    <Content Include="Assets\libs\bootstrap\bootstrap.min.js" />
+    <Content Include="Assets\libs\jquery-ajax-unobtrusive\jquery.unobtrusive-ajax.js" />
+    <Content Include="Assets\libs\jquery-ajax-unobtrusive\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Assets\libs\jquery-validate\jquery.validate.js" />
+    <Content Include="Assets\libs\jquery-validate\jquery.validate.min.js" />
+    <Content Include="Assets\libs\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Include="Assets\libs\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Assets\libs\jquery\jquery.min.js" />
+    <Content Include="Assets\libs\select2\select2.min.css" />
+    <Content Include="Assets\libs\select2\select2.min.js" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Action\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\PartialHeader.cshtml" />
+    <Content Include="Areas\Admin\Views\Action\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Action\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Province\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Province\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Province\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\District\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\District\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\District\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Wards\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Wards\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Wards\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Street\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Street\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ConstructionLevel\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ConstructionLevel\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ConstructionLevel\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Depreciation\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Depreciation\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Depreciation\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Street\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Land\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Land\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Land\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Apartment\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Apartment\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Apartment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleDepreciation\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleDepreciation\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleDepreciation\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\YearBuilt\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\YearBuilt\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\YearBuilt\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleType\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleType\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleType\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LocationType\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LocationType\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\LocationType\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Location\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Location\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Location\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\UserProfile.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\ChangePassword.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\PartialPagination.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Role\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\RoleAction\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\PartialFooter.cshtml" />
+    <Content Include="Assets\images\thong-tu-257-2016-tt-btc-bo-tai-chinh.doc" />
+    <Content Include="Assets\fonts\icons-fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\fonts\icons-fonts\fontawesome-webfont.ttf" />
+    <Content Include="Assets\fonts\icons-fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\fonts\icons-fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Views\VehicleRegistrationYear\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleRegistrationYear\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleRegistrationYear\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\NotFound.cshtml" />
+    <Content Include="Areas\Admin\Views\Error\AccessDenied.cshtml" />
+    <Content Include="Uploaded\Images\Icon\2022\10\16\user8-128x128_1610230606.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\17\user7-128x128_1710022028.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\23\giay-chung-nhan_2310030349.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\27\e15a5ea72ea8edf6b4b9_2710171349.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\1_2810014719.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\2.Chon-danh-muc_03_2810014753.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\2530_2810004016.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\2e1a1b44-bbb4-4cdf-8737-5a6a871dcaf1_2810002134.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\2e1a1b44-bbb4-4cdf-8737-5a6a871dcaf1_2810003758.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\2e2bb89d-f73a-4b26-8227-8f692df90c4f_2810013818.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\300x150_1707162138_2810014929.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\300x150_2810014929.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\300_2810014929.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\52.Box-luat-su-tu-van_03_2810014826.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\6.Dat_mua_TCVN_2810013842.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\Banner_ads_1_2810014919.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\Banner_phap_ly_doanh_nghiep_1404111901_2810014231.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\Banner_phap_ly_doanh_nghiep_mobile_2810014509.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\Banner_TinhthueTNCN_2810014623.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\Screenshot_2022-07-08_at_00-58-54_Legal_newsletter_No_24.2022_2810004458.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\28\share_phap_ly_doanh_nghiep_2810014539.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\1_2910003513.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\2.Chon-danh-muc_03_2910003224.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\2.Chon-danh-muc_03_2910004758.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\2_2910015731.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\300x150_1707162138_2910004821.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\300x150_1707162138_2910005336.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\300x150_2910020811.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\300_2910003741.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\300_2910020811.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\3_2910003218.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\3_2910020325.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\4042_2910120229.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\52.Box-luat-su-tu-van_03_2910003210.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\52.Box-luat-su-tu-van_03_2910004803.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\ads_2910004837.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\amp-thumb_2910120249.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\Baker_McKenzie_0410111756_0902170845_2910020507.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\bando_2910005854.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\banner-chudetin-LVN-300x250_2910230231.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\banner1_2910005644.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\banner2_2910005643.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\bannerdvpldn_2910005627.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\Banner_ads_1_2910004910.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\Banner_ads_3_2910005611.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\Banner_ads_3_2910020756.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\Banner_PLDN_Backkim_2910020705.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\Banner_PLDN_Vang_2910004921.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\Banner_Quydinhhoadon_2910005252.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\Banner_Thanh_toan_online_x2_3110111343_2910005644.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\Banner_TinhthueTNCN_2910005643.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\bg-dmo2_2910020803.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\bg-pm_2910005902.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\bg-tien-ich_2910005109.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\bg-tien-ich_2910005619.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\demo_2910231458.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\dung-tuyen-dung-cong-chuc-huyen-xa_1705093955_2910020653.jpg" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\thumb1x1_2910230237.png" />
+    <Content Include="Uploaded\Images\Icon\2022\10\29\videobg_2910163929.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\16\user8-128x128_1610230606.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\17\user7-128x128_1710022028.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\23\giay-chung-nhan_2310030349.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\27\e15a5ea72ea8edf6b4b9_2710171349.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\1_2810014719.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\2.Chon-danh-muc_03_2810014753.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\2530_2810004016.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\2e1a1b44-bbb4-4cdf-8737-5a6a871dcaf1_2810002134.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\2e1a1b44-bbb4-4cdf-8737-5a6a871dcaf1_2810003758.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\2e2bb89d-f73a-4b26-8227-8f692df90c4f_2810013818.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\300x150_1707162138_2810014929.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\300x150_2810014929.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\300_2810014929.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\52.Box-luat-su-tu-van_03_2810014826.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\6.Dat_mua_TCVN_2810013842.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\Banner_ads_1_2810014919.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\Banner_phap_ly_doanh_nghiep_1404111901_2810014231.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\Banner_phap_ly_doanh_nghiep_mobile_2810014509.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\Banner_TinhthueTNCN_2810014623.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\Screenshot_2022-07-08_at_00-58-54_Legal_newsletter_No_24.2022_2810004458.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\28\share_phap_ly_doanh_nghiep_2810014539.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\1_2910003513.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\2.Chon-danh-muc_03_2910003224.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\2.Chon-danh-muc_03_2910004758.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\2_2910015731.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\300x150_1707162138_2910004821.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\300x150_1707162138_2910005336.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\300x150_2910020811.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\300_2910003741.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\300_2910020811.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\3_2910003218.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\3_2910020325.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\4042_2910120229.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\52.Box-luat-su-tu-van_03_2910003210.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\52.Box-luat-su-tu-van_03_2910004803.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\ads_2910004837.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\amp-thumb_2910120249.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\Baker_McKenzie_0410111756_0902170845_2910020507.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\bando_2910005854.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\banner-chudetin-LVN-300x250_2910230231.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\banner1_2910005644.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\banner2_2910005643.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\bannerdvpldn_2910005627.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\Banner_ads_1_2910004910.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\Banner_ads_3_2910005611.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\Banner_ads_3_2910020756.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\Banner_PLDN_Backkim_2910020705.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\Banner_PLDN_Vang_2910004921.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\Banner_Quydinhhoadon_2910005252.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\Banner_Thanh_toan_online_x2_3110111343_2910005644.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\Banner_TinhthueTNCN_2910005643.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\bg-dmo2_2910020803.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\bg-pm_2910005902.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\bg-tien-ich_2910005109.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\bg-tien-ich_2910005619.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\demo_2910231458.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\dung-tuyen-dung-cong-chuc-huyen-xa_1705093955_2910020653.jpg" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\thumb1x1_2910230237.png" />
+    <Content Include="Uploaded\Images\Mobile\2022\10\29\videobg_2910163929.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\16\user8-128x128_1610230606.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\17\user7-128x128_1710022028.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\23\giay-chung-nhan_2310030349.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\27\e15a5ea72ea8edf6b4b9_2710171349.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\1_2810014719.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\2.Chon-danh-muc_03_2810014753.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\2530_2810004016.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\2e1a1b44-bbb4-4cdf-8737-5a6a871dcaf1_2810002134.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\2e1a1b44-bbb4-4cdf-8737-5a6a871dcaf1_2810003758.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\2e2bb89d-f73a-4b26-8227-8f692df90c4f_2810013818.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\300x150_1707162138_2810014929.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\300x150_2810014929.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\300_2810014929.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\52.Box-luat-su-tu-van_03_2810014826.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\6.Dat_mua_TCVN_2810013842.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\Banner_ads_1_2810014919.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\Banner_phap_ly_doanh_nghiep_1404111901_2810014231.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\Banner_phap_ly_doanh_nghiep_mobile_2810014509.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\Banner_TinhthueTNCN_2810014623.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\Screenshot_2022-07-08_at_00-58-54_Legal_newsletter_No_24.2022_2810004458.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\28\share_phap_ly_doanh_nghiep_2810014539.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\1_2910003513.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\2.Chon-danh-muc_03_2910003224.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\2.Chon-danh-muc_03_2910004758.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\2_2910015731.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\300x150_1707162138_2910004821.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\300x150_1707162138_2910005336.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\300x150_2910020811.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\300_2910003741.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\300_2910020811.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\3_2910003218.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\3_2910020325.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\4042_2910120229.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\52.Box-luat-su-tu-van_03_2910003210.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\52.Box-luat-su-tu-van_03_2910004803.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\ads_2910004837.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\amp-thumb_2910120249.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\Baker_McKenzie_0410111756_0902170845_2910020507.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\bando_2910005854.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\banner-chudetin-LVN-300x250_2910230231.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\banner1_2910005644.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\banner2_2910005643.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\bannerdvpldn_2910005627.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\Banner_ads_1_2910004910.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\Banner_ads_3_2910005611.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\Banner_ads_3_2910020756.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\Banner_PLDN_Backkim_2910020705.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\Banner_PLDN_Vang_2910004921.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\Banner_Quydinhhoadon_2910005252.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\Banner_Thanh_toan_online_x2_3110111343_2910005644.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\Banner_TinhthueTNCN_2910005643.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\bg-dmo2_2910020803.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\bg-pm_2910005902.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\bg-tien-ich_2910005109.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\bg-tien-ich_2910005619.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\demo_2910231458.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\dung-tuyen-dung-cong-chuc-huyen-xa_1705093955_2910020653.jpg" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\thumb1x1_2910230237.png" />
+    <Content Include="Uploaded\Images\Original\2022\10\29\videobg_2910163929.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\16\user8-128x128_1610230606.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\17\user7-128x128_1710022028.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\23\giay-chung-nhan_2310030349.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\27\e15a5ea72ea8edf6b4b9_2710171349.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\1_2810014719.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\2.Chon-danh-muc_03_2810014753.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\2530_2810004016.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\2e1a1b44-bbb4-4cdf-8737-5a6a871dcaf1_2810002134.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\2e1a1b44-bbb4-4cdf-8737-5a6a871dcaf1_2810003758.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\2e2bb89d-f73a-4b26-8227-8f692df90c4f_2810013818.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\300x150_1707162138_2810014929.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\300x150_2810014929.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\300_2810014929.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\52.Box-luat-su-tu-van_03_2810014826.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\6.Dat_mua_TCVN_2810013842.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\Banner_ads_1_2810014919.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\Banner_phap_ly_doanh_nghiep_1404111901_2810014231.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\Banner_phap_ly_doanh_nghiep_mobile_2810014509.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\Banner_TinhthueTNCN_2810014623.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\Screenshot_2022-07-08_at_00-58-54_Legal_newsletter_No_24.2022_2810004458.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\28\share_phap_ly_doanh_nghiep_2810014539.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\1_2910003513.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\2.Chon-danh-muc_03_2910003224.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\2.Chon-danh-muc_03_2910004758.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\2_2910015731.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\300x150_1707162138_2910004821.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\300x150_1707162138_2910005336.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\300x150_2910020811.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\300_2910003741.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\300_2910020811.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\3_2910003218.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\3_2910020325.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\4042_2910120229.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\52.Box-luat-su-tu-van_03_2910003210.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\52.Box-luat-su-tu-van_03_2910004803.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\ads_2910004837.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\amp-thumb_2910120249.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\Baker_McKenzie_0410111756_0902170845_2910020507.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\bando_2910005854.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\banner-chudetin-LVN-300x250_2910230231.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\banner1_2910005644.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\banner2_2910005643.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\bannerdvpldn_2910005627.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\Banner_ads_1_2910004910.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\Banner_ads_3_2910005611.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\Banner_ads_3_2910020756.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\Banner_PLDN_Backkim_2910020705.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\Banner_PLDN_Vang_2910004921.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\Banner_Quydinhhoadon_2910005252.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\Banner_Thanh_toan_online_x2_3110111343_2910005644.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\Banner_TinhthueTNCN_2910005643.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\bg-dmo2_2910020803.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\bg-pm_2910005902.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\bg-tien-ich_2910005109.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\bg-tien-ich_2910005619.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\demo_2910231458.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\dung-tuyen-dung-cong-chuc-huyen-xa_1705093955_2910020653.jpg" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\thumb1x1_2910230237.png" />
+    <Content Include="Uploaded\Images\Standard\2022\10\29\videobg_2910163929.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\16\user8-128x128_1610230606.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\17\user7-128x128_1710022028.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\23\giay-chung-nhan_2310030349.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\27\e15a5ea72ea8edf6b4b9_2710171349.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\1_2810014719.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\2.Chon-danh-muc_03_2810014753.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\2530_2810004016.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\2e1a1b44-bbb4-4cdf-8737-5a6a871dcaf1_2810002134.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\2e1a1b44-bbb4-4cdf-8737-5a6a871dcaf1_2810003758.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\2e2bb89d-f73a-4b26-8227-8f692df90c4f_2810013818.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\300x150_1707162138_2810014929.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\300x150_2810014929.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\300_2810014929.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\52.Box-luat-su-tu-van_03_2810014826.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\6.Dat_mua_TCVN_2810013842.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\Banner_ads_1_2810014919.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\Banner_phap_ly_doanh_nghiep_1404111901_2810014231.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\Banner_phap_ly_doanh_nghiep_mobile_2810014509.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\Banner_TinhthueTNCN_2810014623.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\Screenshot_2022-07-08_at_00-58-54_Legal_newsletter_No_24.2022_2810004458.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\28\share_phap_ly_doanh_nghiep_2810014539.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\1_2910003513.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\2.Chon-danh-muc_03_2910003224.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\2.Chon-danh-muc_03_2910004758.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\2_2910015731.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\300x150_1707162138_2910004821.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\300x150_1707162138_2910005336.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\300x150_2910020811.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\300_2910003741.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\300_2910020811.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\3_2910003218.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\3_2910020325.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\4042_2910120229.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\52.Box-luat-su-tu-van_03_2910003210.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\52.Box-luat-su-tu-van_03_2910004803.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\ads_2910004837.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\amp-thumb_2910120249.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\Baker_McKenzie_0410111756_0902170845_2910020507.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\bando_2910005854.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\banner-chudetin-LVN-300x250_2910230231.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\banner1_2910005644.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\banner2_2910005643.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\bannerdvpldn_2910005627.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\Banner_ads_1_2910004910.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\Banner_ads_3_2910005611.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\Banner_ads_3_2910020756.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\Banner_PLDN_Backkim_2910020705.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\Banner_PLDN_Vang_2910004921.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\Banner_Quydinhhoadon_2910005252.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\Banner_Thanh_toan_online_x2_3110111343_2910005644.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\Banner_TinhthueTNCN_2910005643.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\bg-dmo2_2910020803.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\bg-pm_2910005902.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\bg-tien-ich_2910005109.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\bg-tien-ich_2910005619.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\demo_2910231458.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\dung-tuyen-dung-cong-chuc-huyen-xa_1705093955_2910020653.jpg" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\thumb1x1_2910230237.png" />
+    <Content Include="Uploaded\Images\Thumb\2022\10\29\videobg_2910163929.jpg" />
+    <Content Include="Uploaded\Others\2022\10\23\logo_2310045637.svg" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\NotarizationFee\VehicleSalesContract.cshtml" />
+    <Content Include="Views\NotarizationFee\LoanContract.cshtml" />
+    <Content Include="Views\NotarizationFee\ContractAmendmentsAndSupplements.cshtml" />
+    <Content Include="Views\NotarizationFee\EconomicCommercialInvestmentBusinessContract.cshtml" />
+    <Content Include="Views\NotarizationFee\HouseLeaseContract.cshtml" />
+    <Content Include="Views\NotarizationFee\MortgageContract.cshtml" />
+    <Content Include="Views\NotarizationFee\DepositContract.cshtml" />
+    <Content Include="Views\NotarizationFee\CapitalContributionContract.cshtml" />
+    <Content Include="Views\NotarizationFee\ContractCapitalContributionByApartment.cshtml" />
+    <Content Include="Views\NotarizationFee\PurchaseAndSaleApartmentContract.cshtml" />
+    <Content Include="Views\NotarizationFee\ContractDonationApartment.cshtml" />
+    <Content Include="Views\NotarizationFee\DocumentDivideInheritanceApartment.cshtml" />
+    <Content Include="Views\NotarizationFee\LandUseRightTransferContract.cshtml" />
+    <Content Include="Views\NotarizationFee\ContractSaleHouseAndTransferLandUseRight.cshtml" />
+    <Content Include="Views\NotarizationFee\ContractDonationHouseLand.cshtml" />
+    <Content Include="Views\NotarizationFee\ContractDonationLandUseRight.cshtml" />
+    <Content Include="Views\NotarizationFee\HouseLandSeparationContract.cshtml" />
+    <Content Include="Views\NotarizationFee\ContractDivisionLandUseRight.cshtml" />
+    <Content Include="Views\NotarizationFee\ContractCapitalContributionByLandUseRight.cshtml" />
+    <Content Include="Views\NotarizationFee\ContractCapitalContributionByHouseLand.cshtml" />
+    <Content Include="Views\Home\Index.Mobile.cshtml" />
+    <Content Include="Views\Home\NotFound.cshtml" />
+    <Content Include="Views\NotarizationFee\DocumentDivisionInheritanceLandUseRight.cshtml" />
+    <Content Include="Views\NotarizationFee\DocumentDivisionInheritanceHouseLand.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Assets\libs\feather-icons\" />
+    <Folder Include="Areas\Admin\Views\Ajax\" />
+    <Folder Include="logs\" />
+    <Folder Include="Views\Ajax\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\MenuItem\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MenuItem\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\MenuItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Page\Edit.cshtml" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\bower.json" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\CHANGELOG.md" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\composer.json" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\package.json" />
+    <Content Include="Areas\Admin\Assets\libs\tinymce\README.md" />
+    <Content Include="Areas\Admin\Views\Street\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\Location\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\Wards\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\District\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\YearBuilt\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\Land\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\LocationType\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\Depreciation\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\Apartment\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\ConstructionLevel\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleRegistrationYear\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleType\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\VehicleDepreciation\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\User\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\Seo\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Seo\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Seo\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Menu\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\MenuItem\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\Seo\BindData.cshtml" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\bender-runner.config.json" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\CHANGES.md" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\LICENSE.md" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\scayt\CHANGELOG.md" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\scayt\LICENSE.md" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\plugins\scayt\README.md" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\README.md" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\assets\posteddata.php" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\old\sample_posteddata.php" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\font\config.json" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\font\fontello.eot" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\font\fontello.ttf" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\font\fontello.woff" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\samples\toolbarconfigurator\lib\codemirror\LICENSE" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\SECURITY.md" />
+    <Content Include="Areas\Admin\Assets\libs\ckeditor\skins\moono-lisa\readme.md" />
+    <Content Include="Areas\Admin\Views\Role\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\File\Index.cshtml" />
+    <Content Include="Areas\Admin\Assets\libs\dropzone\dist\basic.css.map" />
+    <Content Include="Areas\Admin\Assets\libs\dropzone\dist\dropzone-min.js.map" />
+    <Content Include="Areas\Admin\Assets\libs\dropzone\dist\dropzone.css.map" />
+    <Content Include="Areas\Admin\Assets\libs\dropzone\dist\dropzone.js.map" />
+    <Content Include="Areas\Admin\Assets\libs\dropzone\dist\dropzone.mjs" />
+    <Content Include="Areas\Admin\Assets\libs\dropzone\dist\dropzone.mjs.map" />
+    <Content Include="Areas\Admin\Views\File\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\PartialPaginationAjax.cshtml" />
+    <Content Include="Areas\Admin\Views\RoleAction\BindData.cshtml" />
+    <Content Include="Areas\Admin\Views\Action\BindData.cshtml" />
+    <Content Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Areas\Admin\Views\Article\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\BindData.cshtml" />
+    <None Include="packages.config" />
+    <Content Include="Views\Shared\PartialFooter.cshtml" />
+    <Content Include="Views\Shared\PartialHeader.cshtml" />
+    <Content Include="Views\Shared\PartialHeader.Mobile.cshtml" />
+    <Content Include="Views\Shared\PartialFooter.Mobile.cshtml" />
+    <Content Include="Views\Article\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\tinhphicongchung.com.helper\tinhphicongchung.com.helper.csproj">
+      <Project>{9e1b9711-1018-45d5-995b-c6a4134b2a6b}</Project>
+      <Name>tinhphicongchung.com.helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\tinhphicongchung.com.library\tinhphicongchung.com.library.csproj">
+      <Project>{c3978cfd-d8b5-43c3-a53d-c477b6cc1e41}</Project>
+      <Name>tinhphicongchung.com.library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Areas\Admin\Assets\libs\tinymce\tinymce.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>63733</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44382/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

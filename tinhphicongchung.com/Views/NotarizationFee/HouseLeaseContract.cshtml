@@ -1,0 +1,50 @@
+﻿@model HouseLeaseContractVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main-content">
+    <div class="bread-crumb">
+        <a href="/" title="Trang chủ">Trang chủ</a>
+        <a href="@Model.Seos.Path.GetUrl()" title="@Model.SeoName.GetTitle()">@Model.SeoName</a>
+    </div>
+    <div class="section-header">
+        <h1 class="title-header-1">@Model.SeoHeader</h1>
+    </div>
+    <section class="section section-shadow">
+        <header class="section-header fixmobi">
+            @if (!string.IsNullOrWhiteSpace(Model.SeoDescription))
+            {
+                @Html.Raw(Model.SeoDescription)
+            }
+        </header>
+        <div class="row-ketqua hidden">
+            @if (!string.IsNullOrWhiteSpace(Model.SeoFooter))
+            {
+                @Html.Raw(Model.SeoFooter)
+            }
+        </div>
+        <form action="@Url.Action("HouseLeaseContract", "NotarizationFee")" class="section-content" data-ajax="true" data-ajax-begin="app.ajaxEvents.OnBegin" data-ajax-complete="app.ajaxEvents.OnComplete" data-ajax-method="Post" data-ajax-success="app.ajaxEvents.OnSuccess" method="post" novalidate="novalidate">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Time">Thời gian cho thuê (tháng)</label>
+                        @Html.TextBoxFor(x => x.RentalPeriod, new { @class = "form-control input-amount number", autocomplete = "off", title = "Nhập Thời gian cho thuê(tháng)", placeholder = "Nhập Thời gian cho thuê(tháng)" })
+                        @Html.ValidationMessageFor(m => m.RentalPeriod, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Amount">Giá thuê/tháng (VNĐ)</label>
+                        @Html.TextBoxFor(x => x.Amount, new { @class = "form-control input-amount currency", autocomplete = "off", title = "Nhập Giá thuê/tháng", placeholder = "Nhập Giá thuê/tháng" })
+                        @Html.ValidationMessageFor(m => m.Amount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row-div">
+                <a href="/" title="Quay lại" class="btn-quaylai go-back">Quay lại</a>
+                <span class="btn-ketqua btn-submit">Xem kết quả</span>
+            </div>
+        </form>
+    </section>
+</div>

@@ -1,0 +1,121 @@
+﻿@using tinhphicongchung.com.helper
+@using tinhphicongchung.com.library
+@model FileVM
+<div class="row">
+    <div class="col-md-12 ms-auto">
+        <div class="card">
+            <div class="card-header">
+                <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a href="#tabs-home-14" class="nav-link active" data-bs-toggle="tab" aria-selected="true" role="tab">Quản lý hình ảnh</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a href="#tabs-profile-14" class="nav-link" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Tải ảnh</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body wrapper_tabcontent popup-height">
+                <div class="tab-content">
+                    <div class="tab-pane fade active show" id="tabs-home-14" role="tabpanel">
+                        <form class="form-group row" action="@Url.Action("BindData", "File", new { Area = "Admin" })" data-ajax="true" data-ajax-begin="app.ajaxEvents.OnBegin" data-ajax-complete="app.ajaxEvents.OnComplete" data-ajax-failure="app.ajaxEvents.OnFailure" data-ajax-method="Post" data-ajax-success="app.ajaxEvents.OnSuccess" data-ajax-mode="replace" data-ajax-update="#file-table-result" method="post" novalidate="novalidate">
+                            <div class="col-md-3 mb-3">
+                                @Html.TextBoxFor(x => x.Keywords, new { @class = "form-control", placeholder = "Tên file ảnh" })
+                            </div>
+                            <input type="hidden" name="Page" />
+                            @*<div class="col-md-2 mb-3">
+                                    @Html.DropDownListFor(m => m.StatusId, new SelectList(Model.StatusList, "StatusId", "Description", Model.StatusId).AddDefaultOption("-- Chọn trạng thái --", "0"), new { @class = "form-select select2" })
+                                </div>*@
+                            <div class="col-md-2 mb-3">
+                                <div class="btn-list flex-nowrap">
+                                    <button type="submit" class="btn btn-primary btn-search">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <circle cx="10" cy="10" r="7"></circle>
+                                            <line x1="21" y1="21" x2="15" y2="15"></line>
+                                        </svg>
+                                        Tìm kiếm
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="container-xl d-flex flex-column justify-content-center">
+                            <div id="file-table-result" class="row g-2">
+                                @if (Model.FilesList.IsAny())
+                                {
+                                    foreach (var item in Model.FilesList)
+                                    {
+                                        <div class="col-6 col-sm-2">
+                                            @if (!string.IsNullOrWhiteSpace(Model.ViewType) && Model.ViewType.ToLower().Trim().Equals("editor"))
+                                            {
+                                                <div class="card card-sm">
+                                                    <a href="javascript:void(0)" class="editor-selected-file" title="Chọn ảnh">
+                                                        <img src="@item.Path.GetImageUrl_Mobile()" alt="@item.Name" class="card-img-top" />
+                                                    </a>
+                                                    <div class="text-center truncate" title="@item.Name">@item.Name</div>
+                                                    <div class="text-gray-600 text-center">@item.FileSize.GetSizeString()</div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="card card-sm">
+                                                    <a href="javascript:void(0)" class="selected-file" title="Chọn ảnh">
+                                                        <img src="@item.Path.GetImageUrl_Mobile()" alt="@item.Name" class="card-img-top" />
+                                                    </a>
+                                                    <div class="text-center truncate" title="@item.Name">@item.Name</div>
+                                                    <div class="text-gray-600 text-center">@item.FileSize.GetSizeString()</div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    @Html.Partial("PartialPaginationAjax", Model.Pagination)
+                                }
+                                else
+                                {
+                                    <div class="col-12">
+                                        <div class="card card-md">
+                                            <div class="card-body">
+                                                <div class="row align-items-center">
+                                                    <div class="col-10">
+                                                        <div class="text-muted">
+                                                            Không tìm thấy dữ liệu phù hợp.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tabs-profile-14" role="tabpanel">
+                        <!--begin::Form-->
+                        <form class="form" action="#" method="post">
+                            <!--begin::Input group-->
+                            <div class="fv-row">
+                                <!--begin::Dropzone-->
+                                <div class="dropzone" id="kt_dropzonejs_example_1">
+                                    <!--begin::Message-->
+                                    <div class="dz-message needsclick">
+                                        <!--begin::Icon-->
+                                        <i class="bi bi-file-earmark-arrow-up text-primary fs-3x"></i>
+                                        <!--end::Icon-->
+                                        <!--begin::Info-->
+                                        <div class="ms-4">
+                                            <h3 class="fs-5 fw-bold text-gray-900 mb-1">Kéo hoặc chọn file ảnh để tải lên.</h3>
+                                            <span class="fs-7 fw-semibold text-gray-400">Tải lên tối đa 10 ảnh.</span>
+                                        </div>
+                                        <!--end::Info-->
+                                    </div>
+                                </div>
+                                <!--end::Dropzone-->
+                            </div>
+                            <!--end::Input group-->
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@model HeaderVM
+<header class="header">
+    <div class="main-header">
+        @if (Model.Pages != null)
+        {
+            if (!string.IsNullOrWhiteSpace(Model.Pages.ImagePath))
+            {
+                <a href="https://congchungnguyenhue.com/" class="header-logo"><img src="@Model.Pages.ImagePath.GetImageUrl()" alt="@Model.Pages.Name.GetTitle()" /></a>
+            }
+            <div class="header-right">
+                <div class="item-right">
+                    <i class="fa fa-phone fa-icon"></i>
+                    <div class="ptext">
+                        @if (!string.IsNullOrWhiteSpace(Model.Pages.Hotline1))
+                        {
+                            <div><strong>Holine: @Model.Pages.Hotline1</strong></div>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(Model.Pages.Email))
+                        {
+                            <div>Email: @Model.Pages.Email</div>
+                        }
+                    </div>
+                </div>
+                <div class="item-right">
+                    @if (!string.IsNullOrWhiteSpace(Model.Pages.Address))
+                    {
+                        <div class="ptext">
+                            <i class="fa fa-map-marker fa-icon"></i>
+                            <div><strong>Địa chỉ:</strong> @Model.Pages.Address</div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</header>
+@if (Model.HeaderMenusList.IsAny())
+{
+    <nav class="nav_header sticky_nav">
+        <ul class="nav-bar">
+            @foreach (var item in Model.HeaderMenusList)
+            {
+                if (!string.IsNullOrWhiteSpace(item.IconPath))
+                {
+                    <li class="nav-item"><a href="@item.Path.GetUrl()" title="@item.Name.GetTitle()">@Html.Raw(item.IconPath)</a></li>
+                }
+                else
+                {
+                    <li class="nav-item"><a href="@item.Path.GetUrl()" title="@item.Name.GetTitle()">@item.Name</a></li>
+                }
+            }
+        </ul>
+    </nav>
+}

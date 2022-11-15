@@ -1,0 +1,38 @@
+﻿@using tinhphicongchung.com.helper
+@using tinhphicongchung.com.library
+@model BaseViewModel
+@{
+    List<MenuItems> menuItems = null;
+    if (Model.MenuItemsList.IsAny())
+    {
+        menuItems = Model.MenuItemsList.FindAll(x => x.MenuId == 1003);
+    }
+}
+<div class="main-content">
+    <section class="section">
+        <header class="section-header">
+            <h1 class="title-header-1">@Model.SeoHeader</h1>
+            <h2 class="title-header-2">@Model.SeoDescription</h2>
+        </header>
+        <div class="section-content">
+            <div class="layout-grid-3">
+                @if (menuItems.IsAny())
+                {
+                    for (int index = 0; index < menuItems.Count; index++)
+                    {
+                        <article class="article-item"@(index == 0 ? " style=background:#ddf7fd" : (index == menuItems.Count - 1 ? " style=padding:0" : ""))>
+                            @if (!string.IsNullOrWhiteSpace(menuItems[index].IconPath))
+                            {
+                                <a href="@menuItems[index].Path.GetUrl()"><img style="height: 100%;" src="@menuItems[index].IconPath.GetImageUrl_Mobile()" alt="giấy chứng nhận" /></a>
+                            }
+                            else
+                            {
+                                <h3 class="article-title"><a href="@menuItems[index].Path.GetUrl()">@menuItems[index].Name</a></h3>
+                            }
+                        </article>
+                    }
+                }
+            </div>
+        </div>
+    </section>
+</div>

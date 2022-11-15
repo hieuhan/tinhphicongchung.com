@@ -1,0 +1,10 @@
+﻿@model HeaderVM
+<header class="header">
+    <div class="main-header">
+        <span class="btn-pushbar-3" data-pushbar-target="left"><i class="fa fa-bars"></i></span>
+        @if (Model.Pages != null && !string.IsNullOrWhiteSpace(Model.Pages.ImagePath))
+        {
+            <a href="https://congchungnguyenhue.com/" class="header-logo"><img src="@Model.Pages.ImagePath.GetImageUrl()" alt="@Model.Pages.Name.GetTitle()" /></a>
+        }
+    </div>
+</header>

@@ -1,0 +1,60 @@
+﻿@model PurchaseAndSaleApartmentContractVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main-content">
+    <div class="bread-crumb">
+        <a href="/" title="Trang chủ">Trang chủ</a>
+        <a href="@Model.Seos.Path.GetUrl()" title="@Model.SeoName.GetTitle()">@Model.SeoName</a>
+    </div>
+    <div class="section-header">
+        <h1 class="title-header-1">@Model.SeoHeader</h1>
+    </div>
+    <section class="section section-shadow">
+        <header class="section-header fixmobi">
+            @if (!string.IsNullOrWhiteSpace(Model.SeoDescription))
+            {
+                @Html.Raw(Model.SeoDescription)
+            }
+        </header>
+        <div class="row-ketqua hidden">
+            @if (!string.IsNullOrWhiteSpace(Model.SeoFooter))
+            {
+                @Html.Raw(Model.SeoFooter)
+            }
+        </div>
+        <form action="@Url.Action("PurchaseAndSaleApartmentContract", "NotarizationFee")" class="section-content" data-ajax="true" data-ajax-begin="app.ajaxEvents.OnBegin" data-ajax-complete="app.ajaxEvents.OnComplete" data-ajax-method="Post" data-ajax-success="app.ajaxEvents.OnSuccess" method="post" novalidate="novalidate">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Diện tích nhà/m2</label>
+                        @Html.TextBoxFor(x => x.HouseArea, new { @class = "form-control double", autocomplete = "off", title = "Nhập Diện tích Nhà", placeholder = "Nhập Diện tích Nhà" })
+                        @Html.ValidationMessageFor(m => m.HouseArea, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Loại Nhà</label>
+                        @Html.DropDownListFor(m => m.ApartmentTypeId, new SelectList(Model.ApartmentTypesList, "ApartmentTypeId", "Description", Model.ApartmentTypeId).AddDefaultOption("--Chọn loại Nhà--", "0"), new { @class = "form-control select2", style = "width: 100%" })
+                        @Html.ValidationMessageFor(m => m.ApartmentTypeId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Năm xây dựng</label>
+                        @Html.DropDownListFor(m => m.Year, new SelectList(Model.YearBuiltsList, "Value", "Description", Model.Year).AddDefaultOption("--Chọn Năm xây dựng--", "0"), new { @class = "form-control select2", style = "width: 100%" })
+                        @Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Cấp công trình</label>
+                        @Html.DropDownListFor(m => m.ApartmentId, new SelectList(Model.ApartmentsList, "ApartmentId", "Description", Model.ApartmentId).AddDefaultOption("--Chọn Cấp công trình--", "0"), new { @class = "form-control select2", style = "width: 100%" })
+                        @Html.ValidationMessageFor(m => m.ApartmentId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row-div">
+                <a href="/" title="Quay lại" class="btn-quaylai">Quay lại</a>
+                <span class="btn-ketqua btn-submit">Xem kết quả</span>
+            </div>
+        </form>
+    </section>
+</div>

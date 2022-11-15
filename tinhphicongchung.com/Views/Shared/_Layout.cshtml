@@ -1,0 +1,67 @@
+﻿@model BaseViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Html.Raw(Model.WebsiteTitle)</title>
+    <meta name="description" @Html.Raw(Model.MetaDescription) />
+    <meta name="keywords" @Html.Raw(Model.MetaKeywords) />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="@Model.WebsiteCanonical" />
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+    <link href="/assets/fonts/font.css" rel="stylesheet" />
+    <link href="/assets/css/main.css" rel="stylesheet" />
+    <link href="/assets/libs/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="/assets/fonts/icons-fonts/awesome-icons.css" rel="stylesheet" />
+    <link href="/assets/libs/select2/select2.min.css" rel="stylesheet" />
+    <link href="/areas/admin/assets/libs/toastr/toastr.css" rel="stylesheet" />
+</head>
+<body>
+    @Html.Action("PartialHeader", "Shared", new { baseViewModel = Model })
+    <main class="main">
+        @RenderBody()
+    </main>
+    @Html.Action("PartialFooter", "Shared", new { baseViewModel = Model })
+    <a href="tel:0966227979" rel="nofollow" class="icon_footer callhotline" title="Hotline">
+        <img src="/assets/images/call.png" alt="call" /><span class="fa-hotline">0966227979</span>
+    </a>
+    <a href="mailto:ccnguyenhue165@gmail.com?subject=[Gửi Tài Liệu]&amp;body=Văn phòng Công Chứng Nguyễn Huệ 165 phố Giảng Võ, phường Cát Linh, quận Đống Đa,  TP Hà Nội hân hạnh phục vụ quý khách. Hotline: 0966227979" target="_blank" rel="nofollow" class="icon_footer ic-email" title="Gửi email"><img src="/assets/images/email.png" alt="Gửi email" /></a>
+    <a href="http://zalo.me/0966227979" target="_blank" rel="nofollow" class="icon_footer ic-zalo" title="Hỗ trợ Zalo"><img src="/assets/images/zalo.png" alt="Hỗ trợ Zalo" /></a>
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v6.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat"
+         attribution=setup_tool
+         page_id="109138344122175"
+         logged_in_greeting="Văn phòng công chứng giúp gì được cho Anh/chị ạ? Liên Hệ hotline: 0966227979"
+         logged_out_greeting="Văn phòng công chứng giúp gì được cho Anh/chị ạ? Liên Hệ hotline: 0966227979">
+    </div>
+    <!-- End -->
+    <script src="/assets/libs/jquery/jquery.min.js" defer></script>
+    <script src="/assets/libs/jquery-validate/jquery.validate.js" defer></script>
+    <script src="/assets/libs/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js" defer></script>
+    <script src="/assets/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" defer></script>
+    <script src="/assets/libs/select2/select2.min.js" defer></script>
+    <script src="/areas/admin/assets/libs/toastr/toastr.js" defer></script>
+    <script src="/assets/js/navigation.js" defer></script>
+    <script src="/assets/js/app.js" defer></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,70 @@
+﻿@model ContractCapitalContributionByLandUseRightVM
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="main-content">
+    <div class="bread-crumb">
+        <a href="/" title="Trang chủ">Trang chủ</a>
+        <a href="@Model.Seos.Path.GetUrl()" title="@Model.SeoName.GetTitle()">@Model.SeoName</a>
+    </div>
+    <div class="section-header">
+        <h1 class="title-header-1">@Model.SeoHeader</h1>
+    </div>
+    <section class="section section-shadow">
+        <header class="section-header fixmobi">
+            @if (!string.IsNullOrWhiteSpace(Model.SeoDescription))
+            {
+                @Html.Raw(Model.SeoDescription)
+            }
+        </header>
+        <div class="row-ketqua hidden">
+            @if (!string.IsNullOrWhiteSpace(Model.SeoFooter))
+            {
+                @Html.Raw(Model.SeoFooter)
+            }
+        </div>
+        <form action="@Url.Action("ContractCapitalContributionByLandUseRight", "NotarizationFee")" class="section-content" data-ajax="true" data-ajax-begin="app.ajaxEvents.OnBegin" data-ajax-complete="app.ajaxEvents.OnComplete" data-ajax-method="Post" data-ajax-success="app.ajaxEvents.OnSuccess" method="post" novalidate="novalidate">
+            @Html.AntiForgeryToken()
+            <div class="box-body">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Quận Huyện</label>
+                        @Html.DropDownListFor(m => m.DistrictId, new SelectList(Model.DistrictsList, "DistrictId", "Description", Model.DistrictId).AddDefaultOption("--Chọn Quận Huyện--", "0"), new { @class = "form-control load-wards select2", style = "width: 100%" })
+                        @Html.ValidationMessageFor(m => m.DistrictId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Phường Xã</label>
+                        @Html.DropDownListFor(m => m.WardId, new SelectList(Model.WardsList, "WardId", "Description", Model.WardId).AddDefaultOption("--Chọn Phường Xã--", "0"), new { @class = "form-control load-streets select2", style = "width: 100%" })
+                        @Html.ValidationMessageFor(m => m.WardId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Đường Phố</label>
+                        @Html.DropDownListFor(m => m.StreetId, new SelectList(Model.StreetsList, "WardId", "Description", Model.StreetId).AddDefaultOption("--Chọn Đường Phố--", "0"), new { @class = "form-control load-locations select2", style = "width: 100%" })
+                        @Html.ValidationMessageFor(m => m.StreetId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Loại đất</label>
+                        @Html.DropDownListFor(m => m.LandTypeId, new SelectList(Model.LandTypesList, "LandTypeId", "Description", Model.LandTypeId).AddDefaultOption("--Chọn loại đất--", "0"), new { @class = "form-control load-locations select2", style = "width: 100%" })
+                        @Html.ValidationMessageFor(m => m.LandTypeId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Vị trí</label>
+                        @Html.DropDownListFor(m => m.LocationId, new SelectList(Model.LocationTypesList, "LocationId", "Description", Model.LocationId).AddDefaultOption("--Chọn Vị trí--", "0"), new { @class = "form-control select2", style = "width: 100%" })
+                        @Html.ValidationMessageFor(m => m.LocationId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Diện tích đất/m2</label>
+                        @Html.TextBoxFor(x => x.LandArea, new { @class = "form-control double", autocomplete = "off", title = "Nhập Diện tích đất", placeholder = "Nhập Diện tích đất" })
+                        @Html.ValidationMessageFor(m => m.LandArea, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row-div">
+                <a href="/" title="Quay lại" class="btn-quaylai">Quay lại</a>
+                <span class="btn-ketqua btn-submit">Xem kết quả</span>
+            </div>
+        </form>
+    </section>
+</div>

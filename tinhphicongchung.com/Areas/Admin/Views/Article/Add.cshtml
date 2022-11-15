@@ -1,0 +1,136 @@
+﻿@using tinhphicongchung.com.helper
+@using tinhphicongchung.com.library
+@model ArticleEditVM
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Thêm Bài viết</h3>
+            </div>
+            <div class="wrapper_tabcontent popup-height card-body">
+                <form id="add-land-form" action="@Url.Action("Add", "Article", new { Area = "Admin" })" data-ajax="true" data-ajax-begin="app.ajaxEvents.OnBegin" data-ajax-complete="app.ajaxEvents.OnComplete" data-ajax-failure="app.ajaxEvents.OnFailure" data-ajax-method="Post" data-ajax-success="app.ajaxEvents.OnSuccess" method="post" novalidate="novalidate">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group mb-3 row">
+                        <label class="col-2 col-form-label required">Tiêu đề</label>
+                        <div class="col">
+                            @Html.TextBoxFor(t => t.Title, new { @class = "form-control", autocomplete = "new-password" })
+                            @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @*<div class="form-group mb-3 row">
+                        <label class="col-2 col-form-label">Trích dẫn</label>
+                        <div class="col">
+                            @Html.TextBoxFor(t => t.Summary, new { @class = "js-ckeditor", autocomplete = "new-password" })
+                            @Html.ValidationMessageFor(m => m.Summary, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+                    <div class="form-group mb-3 row">
+                        <label class="col-2 col-form-label">Hình ảnh</label>
+                        <div class="d-flex align-items-center col-9">
+                            <div class="me-3">
+                                <img src="/assets/images/no-image.png" class="rounded-circle avatar avatar-lg select-file" title="Chọn ảnh" />
+                                @Html.HiddenFor(x => x.ImagePath, new { @class = "hidden-file-selected" })
+                            </div>
+                            <div class="mt-3">
+                                <label class="form-check form-switch">
+                                    <input name="RemoveImage" class="form-check-input" type="checkbox" value="true" />
+                                    <span class="form-check-label">Không sử dụng ảnh</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <label class="col-2 col-form-label">Url</label>
+                        <div class="col">
+                            @Html.TextBoxFor(t => t.ArticleUrl, new { @class = "form-control", autocomplete = "new-password" })
+                            @Html.ValidationMessageFor(m => m.ArticleUrl, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <label class="col-2 col-form-label">Nội dung</label>
+                        <div class="col frm-box-group">
+                            <div class="control-editer top10">
+                                <a href="javascript:void(0)" title="Chèn Ảnh" class="select-file" data-type="editor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-photo" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <line x1="15" y1="8" x2="15.01" y2="8"></line>
+                                        <rect x="4" y="4" width="16" height="16" rx="3"></rect>
+                                        <path d="M4 15l4 -4a3 5 0 0 1 3 0l5 5"></path>
+                                        <path d="M14 14l1 -1a3 5 0 0 1 3 0l2 2"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            @Html.TextAreaFor(t => t.ArticleContent, new { @class = "js-ckeditor" })
+                            @Html.ValidationMessageFor(m => m.ArticleContent, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <label class="col-2 col-form-label">Tiêu đề SEO</label>
+                        <div class="col">
+                            @Html.TextBoxFor(t => t.MetaTitle, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.MetaTitle, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <label class="col-2 col-form-label">Mô tả SEO</label>
+                        <div class="col">
+                            @Html.TextBoxFor(t => t.MetaDescription, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.MetaDescription, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <label class="col-2 col-form-label">Từ khóa SEO</label>
+                        <div class="col">
+                            @Html.TextBoxFor(t => t.MetaKeyword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.MetaKeyword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <label class="col-2 col-form-label">Trạng thái</label>
+                        <div class="col">
+                            @Html.DropDownListFor(m => m.ReviewStatusId, new SelectList(Model.ReviewStatusList, "ReviewStatusId", "Description", Model.ReviewStatusId), new { id = "EditForm_ReviewStatusId", @class = "form-control select2 js", @disabled = "disabled" })
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <label class="col-2 col-form-label">Thứ tự hiển thị</label>
+                        <div class="col">
+                            @Html.TextBoxFor(t => t.DisplayOrder, new { @class = "form-control display-order" })
+                            <small class="form-hint">Nếu để trống, không nhập thì hệ thống sẽ tự xử lý.</small>
+                            @Html.ValidationMessageFor(m => m.DisplayOrder, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group mb-3 row">
+                        <div class="col-2 col-form-label"></div>
+                        <div class="col">
+                            <label class="form-check form-check-inline">
+                                @if (Model.AddAnother)
+                                {
+                                    <input name="AddAnother" value="true" class="form-check-input" type="checkbox" checked="checked" />
+                                }
+                                else
+                                {
+                                    <input name="AddAnother" value="true" class="form-check-input" type="checkbox" />
+                                }
+                                <span class="form-check-label">Thêm tiếp dữ liệu khác</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex">
+                            <a href="javascript:void(0)" title="Đóng" data-toggle-target="#_editForm" class="btn btn-link">Đóng</a>
+                            <button type="submit" class="btn btn-primary ms-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-floppy" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2"></path>
+                                    <circle cx="12" cy="14" r="2"></circle>
+                                    <polyline points="14 4 14 8 8 8 8 4"></polyline>
+                                </svg>
+                                Thêm mới
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿<!doctype html>
+@using tinhphicongchung.com.Areas.Admin.Services.Extensions
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hệ thống quản trị Tính phí Công chứng</title>
+    <link href="/areas/admin/assets/css/tinhphicongchung.min.css" rel="stylesheet" />
+    <link href="/areas/admin/assets/libs/select2/select2.min.css" rel="stylesheet" />
+    <link href="/areas/admin/assets/libs/toastr/toastr.css" rel="stylesheet" />
+    <link href="/areas/admin/assets/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
+    <link href="/areas/admin/assets/css/app.css" rel="stylesheet" />
+</head>
+<body class="layout-fluid">
+    <div class="page">
+        @Html.Action("PartialHeader", "Shared", new { Area = "Admin" })
+        <div class="page-wrapper">
+            @RenderBody()
+            @Html.Partial("PartialFooter")
+        </div>
+    </div>
+    <script src="/areas/admin/assets/libs/jquery/jquery.min.js" defer></script>
+    <script src="/areas/admin/assets/js/tinhphicongchung.min.js" defer></script>
+    <script src="/assets/libs/jquery-validate/jquery.validate.js" defer></script>
+    <script src="/assets/libs/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js" defer></script>
+    <script src="/assets/libs/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" defer></script>
+    <script src="/areas/admin/assets/js/init.min.js" defer></script>
+    <script src="/areas/admin/assets/libs/select2/select2.min.js" defer></script>
+    <script src="/areas/admin/assets/libs/toastr/toastr.js" defer></script>
+    <script src="/areas/admin/assets/libs/ckeditor/ckeditor.js" defer></script>
+    <script src="/areas/admin/assets/libs/dropzone/dist/dropzone-min.js" defer></script>
+    <script src="/areas/admin/assets/js/app.js" defer></script>
+    @RenderSection("scripts", required: false)
+    @Html.ToastrNotifications()
+</body>
+</html>
