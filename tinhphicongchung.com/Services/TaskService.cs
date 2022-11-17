@@ -26,10 +26,10 @@ namespace tinhphicongchung.com.Services
                     var vehicleRegistrationYearsTask = VehicleRegistrationYears.Static_GetList(ConstantHelper.StatusIdActivated);
                     var constructionLevelsTask = ConstructionLevels.Static_GetList(ConstantHelper.StatusIdActivated);
                     var landsTask = Lands.Static_GetList(ConstantHelper.StatusIdActivated);
-                    var landTypesTask = LandTypes.Static_GetList();
+                    var landTypesTask = LandTypes.Static_GetListDisplay();
                     var apartmentsTask = Apartments.Static_GetList(ConstantHelper.StatusIdActivated);
                     var apartmentTypesTask = ApartmentTypes.Static_GetList();
-                    var districtsTask = Districts.Static_GetList(ConstantHelper.StatusIdActivated);
+                    var districtsTask = Districts.Static_GetListDisplay();
 
                     await Task.WhenAll(hitCounterTask, menuItemsTask, seosTask,
                         pageTask, yearBuildTask, vehicleTypesTask, vehicleRegistrationYearsTask,

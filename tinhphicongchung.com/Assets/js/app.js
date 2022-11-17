@@ -15,7 +15,14 @@
         },
         OnSuccess: function (response, status, xhr) {
             if (response != null) {
+                $('span[id*="ValidationMessageFor"].text-danger').removeClass('text-danger').text('Bạn vui lòng chọn từ trên xuống dưới');
                 if (response.Message != null) {
+                    if (!response.Completed && response.FieldValidationError != null) {
+                        $('.row-ketqua').hide();
+                        $(`#${response.FieldValidationError}`).first().focus();
+                        $(`#ValidationMessageFor${response.FieldValidationError}`).addClass('text-danger').text(response.Message);   
+                        return;
+                    }
                     var username = '', msg = response.Message;
                     if (response.Message.indexOf('The provided anti-forgery token was meant for user') > -1) {
                         response.Message = response.Message.replace(/"/g, "'");
@@ -34,6 +41,9 @@
 
                     toastr.error(msg, 'Thông báo');
                 } else if (response.Completed) {
+                    if (response.Data == null || response.Data != 'NoAction')
+                        $('.row-ketqua').show();
+                    else $('.row-ketqua').hide();
                     if (response.ReturnUrl != null) {
                         window.location.href = response.ReturnUrl;
                         return;
@@ -58,6 +68,10 @@
         }
     },
     events: function () {
+        $(document).on('change', '.select-onchange', function (e) {
+            var form = $(this).closest('form');
+            if (form) form.submit();
+        })
         $(document).on('change', '.load-districts', function () {
             var self = $(this), provinceId = self.val() || 0,
                 select_districts = $('select[name="DistrictId"]'),
@@ -118,7 +132,9 @@
         $(document).on('change', '.load-wards', function () {
             var self = $(this), districtId = self.val() || 0,
                 select_wards = $('select[name="WardId"]'),
-                select_streets = $('select[name="StreetId"]');
+                select_streets = $('select[name="StreetId"]'),
+                select_location_types = $('select[name="LocationId"]'),
+                form = self.closest('form');
 
             select_wards.empty().append($('<option/>', {
                 'value': '0',
@@ -128,6 +144,11 @@
             select_streets.empty().append($('<option/>', {
                 'value': '0',
                 'text': 'Chọn Đường / Phố'
+            }))
+
+            select_location_types.empty().append($('<option/>', {
+                'value': '0',
+                'text': '--Chọn Vị trí--'
             }))
 
             app.fetchData(
@@ -168,6 +189,8 @@
                         if (jQuery.fn.select2) {
                             $('select[name="WardId"].select2').select2();
                         }
+
+                        if (form) form.submit();
                     }
                 })
                 .catch((error) => {
@@ -176,11 +199,18 @@
         })
         $(document).on('change', '.load-streets', function () {
             var self = $(this), wardId = self.val() || 0,
-                select_streets = $('select[name="StreetId"]');
+                select_streets = $('select[name="StreetId"]'),
+                select_location_types = $('select[name="LocationId"]'),
+                form = self.closest('form');
 
             select_streets.empty().append($('<option/>', {
                 'value': '0',
                 'text': 'Chọn Đường / Phố'
+            }))
+
+            select_location_types.empty().append($('<option/>', {
+                'value': '0',
+                'text': '--Chọn Vị trí--'
             }))
 
             app.fetchData(
@@ -221,6 +251,8 @@
                         if (jQuery.fn.select2) {
                             $('select[name="StreetId"].select2').select2();
                         }
+
+                        if (form) form.submit();
                     }
                 })
                 .catch((error) => {
@@ -230,7 +262,8 @@
         $(document).on('change', 'select[name="LandTypeId"].load-locations', function () {
             var self = $(this), landTypeId = self.val() || 0,
                 streetId = $('select[name="StreetId"] option:selected').val(),
-                select_location_types = $('select[name="LocationId"]');
+                select_location_types = $('select[name="LocationId"]'),
+                form = self.closest('form');
 
             select_location_types.empty().append($('<option/>', {
                 'value': '0',
@@ -284,11 +317,14 @@
                     $('select[name="LocationId"].select2').select2();
                 }
             }
+
+            if (form) form.submit();
         })
         $(document).on('change', 'select[name="StreetId"].load-locations', function () {
             var self = $(this), streetId = self.val() || 0,
                 landTypeId = $('select[name="LandTypeId"] option:selected').val(),
-                select_location_types = $('select[name="LocationId"]');
+                select_location_types = $('select[name="LocationId"]'),
+                form = self.closest('form');
 
             select_location_types.empty().append($('<option/>', {
                 'value': '0',
@@ -342,6 +378,8 @@
                     $('select[name="LocationId"].select2').select2();
                 }
             }
+
+            if (form) form.submit();
         })
         $(document).on('change',
             'select[name="Year"], select[name="Month"]',
@@ -428,6 +466,14 @@
             var value = $(this).val().replace(/^(0*)/, '');
 
             $(this).val(value);
+        })
+        var timeOut;
+        $(document).on('keyup', '.currency, .number, .double', function (event) {
+            clearTimeout(timeOut);
+            var self = $(this), form = self.closest('form');
+            timeOut = setTimeout(function () {
+                form.submit();
+            }, 600);
         })
         $(document).on('click', '.go-back', function (event) {
             window.history.go(-1);

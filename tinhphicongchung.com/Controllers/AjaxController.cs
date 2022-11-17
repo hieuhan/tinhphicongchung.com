@@ -17,7 +17,7 @@ namespace tinhphicongchung.com.Controllers
 
             if (provinceId > 0)
             {
-                var districtsList = await Districts.Static_GetListByProvince(provinceId, ConstantHelper.StatusIdActivated);
+                var districtsList = await Districts.Static_GetListByProvinceDisplay(provinceId);
                 if (districtsList.IsAny())
                 {
                     resultVar.AddRange(districtsList.Select(x => new ObjectJsonVM()
@@ -37,7 +37,7 @@ namespace tinhphicongchung.com.Controllers
 
             if (districtId > 0)
             {
-                var wardsList = await Wards.Static_GetListByDistrict(districtId, ConstantHelper.StatusIdActivated);
+                var wardsList = await Wards.Static_GetListDisplay(districtId);
                 if (wardsList.IsAny())
                 {
                     resultVar.AddRange(wardsList.Select(x => new ObjectJsonVM()
@@ -57,7 +57,7 @@ namespace tinhphicongchung.com.Controllers
 
             if (wardId > 0)
             {
-                var streetsList = await Streets.Static_GetListByWard(wardId, ConstantHelper.StatusIdActivated);
+                var streetsList = await Streets.Static_GetListByWardDisplay(wardId);
                 if (streetsList.IsAny())
                 {
                     resultVar.AddRange(streetsList.Select(x => new ObjectJsonVM()

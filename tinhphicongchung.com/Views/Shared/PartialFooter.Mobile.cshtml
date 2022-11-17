@@ -11,13 +11,13 @@
 <footer class="footer">
     <div class="main-footer">
         <div class="footer-col1">
-            <a class="maps" href="https://congchungnguyenhue.com/lien-he.html"><img src="/assets/images/google-maps.jpg" alt="google map" /></a>
+            <a class="maps" href="https://congchungnguyenvietcuong.com/lien-he.html"><img src="/assets/images/google-maps.jpg" alt="google map" /></a>
             <div class="section-content">
                 <p>
-                    <a href="https://g.page/CongChungNguyenHue?share" class="btn-primary" style="display: block;background: cadetblue;margin: 5px 0;height: 36px;line-height: 36px;text-align: center;text-transform: uppercase;color: #fff !important;font-size: 16px;">Xem đường đi</a>
+                    <a href="https://congchungnguyenvietcuong.com/lien-he.html" class="btn-primary" style="display: block;background: cadetblue;margin: 5px 0;height: 36px;line-height: 36px;text-align: center;text-transform: uppercase;color: #fff !important;font-size: 16px;">Xem đường đi</a>
                 </p>
                 <p>
-                    <a href="https://www.congchungnguyenhue.com/phi-cong-chung.html" class="btn-primary" style="display: block;background: tomato;margin: 5px 0;height: 36px;line-height: 36px;text-align: center;text-transform: uppercase;color: #fff !important;font-size: 16px;">Phí công chứng</a>
+                    <a href="https://www.congchungnguyenvietcuong.com/phi-cong-chung.html" class="btn-primary" style="display: block;background: tomato;margin: 5px 0;height: 36px;line-height: 36px;text-align: center;text-transform: uppercase;color: #fff !important;font-size: 16px;">Phí công chứng</a>
                 </p>
             </div>
         </div>
@@ -93,3 +93,20 @@
         </nav>
     }
 </aside>
+@if (Model.Pages != null)
+{
+    if (!string.IsNullOrWhiteSpace(Model.Pages.Hotline1))
+    {
+        <a href="tel:@Model.Pages.Hotline1" rel="nofollow" class="icon_footer callhotline" title="Hotline">
+            <img src="/assets/images/call.png" alt="call" /><span class="fa-hotline">@Model.Pages.Hotline1</span>
+        </a>
+    }
+    if (!string.IsNullOrWhiteSpace(Model.Pages.Name) && !string.IsNullOrWhiteSpace(Model.Pages.Address) && !string.IsNullOrWhiteSpace(Model.Pages.Hotline1) && !string.IsNullOrWhiteSpace(Model.Pages.Email))
+    {
+        <a href="mailto:@Model.Pages.Email?subject=[Gửi Tài Liệu]&amp;body=@Model.Pages.Name @Model.Pages.Address hân hạnh phục vụ quý khách. Hotline: @Model.Pages.Hotline1" target="_blank" rel="nofollow" class="icon_footer ic-email" title="Gửi email"><img src="/assets/images/email.png" alt="Gửi email" /></a>
+    }
+    if (!string.IsNullOrWhiteSpace(Model.Pages.Hotline1))
+    {
+        <a href="http://zalo.me/@Model.Pages.Hotline1.Replace(".", "").Replace(",", "").Replace(" ", "")" target="_blank" rel="nofollow" class="icon_footer ic-zalo" title="Hỗ trợ Zalo"><img src="/assets/images/zalo.png" alt="Hỗ trợ Zalo" /></a>
+    }
+}

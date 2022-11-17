@@ -72,6 +72,28 @@ namespace tinhphicongchung.com.library
             return resultVar;
         }
 
+        public async Task<List<LandTypes>> GetListDisplay()
+        {
+            List<LandTypes> resultVar = new List<LandTypes>();
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(_connectionString))
+                {
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+
+                    resultVar = await connection.QueryAsync<LandTypes>(string.Format("SELECT * FROM [dbo].[LandTypes] WHERE [LandTypeId] IN (SELECT [LandTypeId] FROM [dbo].[Locations] WHERE [StatusId] = {0}) ORDER BY [DisplayOrder],[Name]", ConstantHelper.StatusIdActivated)) as List<LandTypes>;
+                }
+            }
+            catch (Exception ex)
+            {
+                resultVar = null;
+                throw ex;
+            }
+
+            return resultVar;
+        }
+
         #endregion
 
         #region Static Methods
@@ -80,6 +102,12 @@ namespace tinhphicongchung.com.library
         {
             LandTypes landTypes = new LandTypes();
             return await landTypes.GetList();
+        }
+
+        public static async Task<List<LandTypes>> Static_GetListDisplay()
+        {
+            LandTypes landTypes = new LandTypes();
+            return await landTypes.GetListDisplay();
         }
 
         public static LandTypes Static_Get(byte landTypeId, List<LandTypes> list)

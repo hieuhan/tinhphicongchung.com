@@ -1,9 +1,7 @@
-﻿using Microsoft.Ajax.Utilities;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -65,7 +63,7 @@ namespace tinhphicongchung.com.Areas.Admin.Controllers
                             1,
                             user.UserName,
                             DateTime.Now,
-                            model.RememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddMinutes(FormsAuthentication.Timeout.TotalMinutes),
+                            model.RememberMe ? DateTime.Now.AddDays(30) : DateTime.Now.AddHours(2),
                             model.RememberMe,
                             userData);
 

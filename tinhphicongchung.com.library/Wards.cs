@@ -296,6 +296,30 @@ namespace tinhphicongchung.com.library
             return resultVar;
         }
 
+        public async Task<List<Wards>> GetListByDistrictDisplay(int districtId)
+        {
+            List<Wards> resultVar = new List<Wards>();
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(_connectionString))
+                {
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+
+                    string query = string.Format("SELECT [WardId],[Prefix],CASE WHEN [dbo].[NullOrEmpty]([Prefix])> 0  THEN CONCAT([Prefix], ' ', [Name]) ELSE [Name] END AS [Name],[Description],[ProvinceId],[DistrictId],[StatusId],[DisplayOrder],[CreatedBy],[CrDateTime],[UpdatedBy],[UpdDateTime] FROM [dbo].[Wards] WHERE [DistrictId] = {0} AND [WardId] IN (SELECT [WardId] FROM [dbo].[Locations] WHERE [StatusId] = {1}) AND [StatusId] = {2} ORDER BY [DisplayOrder],[Name]", districtId, ConstantHelper.StatusIdActivated, ConstantHelper.StatusIdActivated, ConstantHelper.StatusIdActivated);
+                    
+                    resultVar = await connection.QueryAsync<Wards>(query) as List<Wards>;
+                }
+            }
+            catch (Exception ex)
+            {
+                resultVar = null;
+                throw ex;
+            }
+
+            return resultVar;
+        }
+
         #endregion
 
         #region Static Methods
@@ -330,6 +354,13 @@ namespace tinhphicongchung.com.library
             Wards districts = new Wards();
             return await districts.GetListByDistrict(district, statusId);
         }
+
+        public static async Task<List<Wards>> Static_GetListDisplay(int district)
+        {
+            Wards wards = new Wards();
+            return await wards.GetListByDistrictDisplay(district);
+        }
+
         public static async Task<Wards> Static_GetById(string actBy, int wardId, byte isJoin = 0)
         {
             Wards wards = new Wards

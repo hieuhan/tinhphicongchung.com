@@ -144,5 +144,6 @@ namespace tinhphicongchung.com.Models
         public Pages Pages { get; set; }
         public List<MenuItems> MenuItemsList { get; set; }
         public Seos Seos { get; set; }
+        public string SubmitAction { get; set; }
     }
 }

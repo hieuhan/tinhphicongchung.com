@@ -27,7 +27,7 @@ namespace tinhphicongchung.com.Models
         public int LocationId { get; set; }
 
         [Display(Name = "Năm xây dựng")]
-        [Range(1960, 2500, ErrorMessage = "Vui lòng chọn {0} năm trong khoảng 1960 đến 2500")]
+        [Range(1960, 2500, ErrorMessage = "Vui lòng chọn {0}")]
         public int Year { get; set; }
 
         [Display(Name = "Cấp công trình")]

@@ -264,6 +264,30 @@ namespace tinhphicongchung.com.library
             return resultVar;
         }
 
+        public async Task<List<Districts>> GetListDisplay()
+        {
+            List<Districts> resultVar;
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(_connectionString))
+                {
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+
+                    string query = string.Format("SELECT * FROM [dbo].[Districts] WHERE [DistrictId] IN (SELECT [DistrictId] FROM [dbo].[Wards] WHERE [WardId] IN(SELECT [WardId] FROM [dbo].[Locations] WHERE [StatusId] = {0}) AND [StatusId] = {1}) AND [StatusId] = {2} ORDER BY [DisplayOrder],[Name]", ConstantHelper.StatusIdActivated, ConstantHelper.StatusIdActivated, ConstantHelper.StatusIdActivated);
+     
+                    resultVar = await connection.QueryAsync<Districts>(query) as List<Districts>;
+                }
+            }
+            catch (Exception ex)
+            {
+                resultVar = null;
+                throw ex;
+            }
+
+            return resultVar;
+        }
+
         public async Task<List<Districts>> GetListByProvince(int provinceId, byte statusId = 0)
         {
             List<Districts> resultVar;
@@ -293,6 +317,30 @@ namespace tinhphicongchung.com.library
             return resultVar;
         }
 
+        public async Task<List<Districts>> GetListByProvinceDisplay(int provinceId)
+        {
+            List<Districts> resultVar;
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(_connectionString))
+                {
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+
+                    string query = string.Format("SELECT * FROM [dbo].[Districts] WHERE [ProvinceId] = {0} AND [DistrictId] IN (SELECT [DistrictId] FROM [dbo].[Wards] WHERE [StatusId] = {1} AND [WardId] IN (SELECT [WardId] FROM [dbo].[Locations] WHERE [StatusId] = {2})) AND [StatusId] = {3} ORDER BY [DisplayOrder],[Name]", provinceId, ConstantHelper.StatusIdActivated, ConstantHelper.StatusIdActivated, ConstantHelper.StatusIdActivated);
+                    
+                    resultVar = await connection.QueryAsync<Districts>(query) as List<Districts>;
+                }
+            }
+            catch (Exception ex)
+            {
+                resultVar = null;
+                throw ex;
+            }
+
+            return resultVar;
+        }
+
         #endregion
 
         #region Static Methods
@@ -303,10 +351,22 @@ namespace tinhphicongchung.com.library
             return await districts.GetList(statusId);
         }
 
+        public static async Task<List<Districts>> Static_GetListDisplay()
+        {
+            Districts districts = new Districts();
+            return await districts.GetListDisplay();
+        }
+
         public static async Task<List<Districts>> Static_GetListByProvince(int provinceId, byte statusId = 0)
         {
             Districts districts = new Districts();
             return await districts.GetListByProvince(provinceId, statusId);
+        }
+
+        public static async Task<List<Districts>> Static_GetListByProvinceDisplay(int provinceId)
+        {
+            Districts districts = new Districts();
+            return await districts.GetListByProvinceDisplay(provinceId);
         }
 
         public static Districts Static_Get(byte districtId, List<Districts> list)

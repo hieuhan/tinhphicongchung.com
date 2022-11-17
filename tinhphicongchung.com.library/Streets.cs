@@ -280,6 +280,30 @@ namespace tinhphicongchung.com.library
             return resultVar;
         }
 
+        public async Task<List<Streets>> GetListByWardDisplay(int wardId)
+        {
+            List<Streets> resultVar = new List<Streets>();
+            try
+            {
+                using (IDbConnection connection = new SqlConnection(_connectionString))
+                {
+                    if (connection.State == ConnectionState.Closed)
+                        connection.Open();
+
+                    string query = string.Format("SELECT [StreetId],[Prefix],CASE WHEN [dbo].[NullOrEmpty]([Prefix]) > 0 THEN CONCAT([Prefix], ' ', [Name]) ELSE [Name] END AS [Name],[Description],[ProvinceId],[DistrictId],[WardId],[StatusId],[DisplayOrder],[CreatedBy],[CrDateTime],[UpdatedBy],[UpdDateTime] FROM [dbo].[Streets] WHERE ([WardId] = {0}) AND ([StreetId] IN (SELECT [StreetId] FROM [dbo].[Locations] WHERE [StatusId] = {1})) ORDER BY [DisplayOrder],[Name]", wardId, ConstantHelper.StatusIdActivated);
+
+                    resultVar = await connection.QueryAsync<Streets>(query) as List<Streets>;
+                }
+            }
+            catch (Exception ex)
+            {
+                resultVar = null;
+                throw ex;
+            }
+
+            return resultVar;
+        }
+
         public async Task<List<Streets>> GetList()
         {
             List<Streets> resultVar = new List<Streets>();
@@ -316,6 +340,13 @@ namespace tinhphicongchung.com.library
             Streets streets = new Streets();
             return await streets.GetListByWard(wardId, statusId);
         }
+
+        public static async Task<List<Streets>> Static_GetListByWardDisplay(int wardId)
+        {
+            Streets streets = new Streets();
+            return await streets.GetListByWardDisplay(wardId);
+        }
+
         public static Streets Static_Get(byte streetId, List<Streets> list)
         {
             Streets resultVar = new Streets();
