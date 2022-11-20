@@ -8,7 +8,7 @@
                 <h3 class="card-title">Cập nhật tài khoản @Model.Users.UserName</h3>
             </div>
             <div class="wrapper_tabcontent popup-height card-body">
-                <form action="@Url.Action("Edit", "Users", new { Area = "Admin" })" data-ajax="true" data-ajax-begin="app.ajaxEvents.OnBegin" data-ajax-complete="app.ajaxEvents.OnComplete" data-ajax-method="Post" data-ajax-success="app.ajaxEvents.OnSuccess" data-ajax-failure="app.ajaxEvents.OnFailure" method="post" enctype="multipart/form-data" novalidate="novalidate">
+                <form action="@Url.Action("Edit", "User", new { Area = "Admin" })" data-ajax="true" data-ajax-begin="app.ajaxEvents.OnBegin" data-ajax-complete="app.ajaxEvents.OnComplete" data-ajax-method="Post" data-ajax-success="app.ajaxEvents.OnSuccess" data-ajax-failure="app.ajaxEvents.OnFailure" method="post" enctype="multipart/form-data" novalidate="novalidate">
                     @Html.AntiForgeryToken()
                     @Html.HiddenFor(x => x.UserId)
                     <div class="form-group mb-3 row">
