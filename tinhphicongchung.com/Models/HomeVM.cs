@@ -5,8 +5,6 @@ namespace tinhphicongchung.com.Models
 {
     public class HomeVM : BaseViewModel
     {
-        
-        public List<MenuItems> MenuItemsList { get; set; }
         public List<MenuItems> MobileMenuItemsList { get; set; }
     }
 }

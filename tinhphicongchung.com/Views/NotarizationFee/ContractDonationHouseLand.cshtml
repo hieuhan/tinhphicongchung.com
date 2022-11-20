@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group">
                         <label>Đường/Phố</label>
-                        @Html.DropDownListFor(m => m.StreetId, new SelectList(Model.StreetsList, "WardId", "Description", Model.StreetId).AddDefaultOption("--Chọn Đường Phố--", "0"), new { @class = "form-control load-locations select2", style = "width: 100%" })
+                        @Html.DropDownListFor(m => m.StreetId, new SelectList(Model.StreetsList, "StreetId", "Description", Model.StreetId).AddDefaultOption("--Chọn Đường Phố--", "0"), new { @class = "form-control load-locations select2", style = "width: 100%" })
                         <span id="ValidationMessageForStreetId" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                     <div class="form-group">

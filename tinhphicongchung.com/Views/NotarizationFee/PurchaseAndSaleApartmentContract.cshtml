@@ -30,30 +30,30 @@
                     <div class="form-group">
                         <label>Diện tích nhà/m2</label>
                         @Html.TextBoxFor(x => x.HouseArea, new { @class = "form-control double", autocomplete = "off", title = "Nhập Diện tích Nhà", placeholder = "Nhập Diện tích Nhà" })
-                        @Html.ValidationMessageFor(m => m.HouseArea, "", new { @class = "text-danger" })
+                        <span id="ValidationMessageForHouseArea" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                     <div class="form-group">
                         <label>Loại Nhà</label>
-                        @Html.DropDownListFor(m => m.ApartmentTypeId, new SelectList(Model.ApartmentTypesList, "ApartmentTypeId", "Description", Model.ApartmentTypeId).AddDefaultOption("--Chọn loại Nhà--", "0"), new { @class = "form-control select2", style = "width: 100%" })
-                        @Html.ValidationMessageFor(m => m.ApartmentTypeId, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(m => m.ApartmentTypeId, new SelectList(Model.ApartmentTypesList, "ApartmentTypeId", "Description", Model.ApartmentTypeId).AddDefaultOption("--Chọn loại Nhà--", "0"), new { @class = "form-control select2 select-onchange", style = "width: 100%" })
+                        <span id="ValidationMessageForApartmentTypeId" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Năm xây dựng</label>
-                        @Html.DropDownListFor(m => m.Year, new SelectList(Model.YearBuiltsList, "Value", "Description", Model.Year).AddDefaultOption("--Chọn Năm xây dựng--", "0"), new { @class = "form-control select2", style = "width: 100%" })
-                        @Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(m => m.Year, new SelectList(Model.YearBuiltsList, "Value", "Description", Model.Year).AddDefaultOption("--Chọn Năm xây dựng--", "0"), new { @class = "form-control select2 select-onchange", style = "width: 100%" })
+                        <span id="ValidationMessageForYear" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                     <div class="form-group">
                         <label>Cấp công trình</label>
-                        @Html.DropDownListFor(m => m.ApartmentId, new SelectList(Model.ApartmentsList, "ApartmentId", "Description", Model.ApartmentId).AddDefaultOption("--Chọn Cấp công trình--", "0"), new { @class = "form-control select2", style = "width: 100%" })
-                        @Html.ValidationMessageFor(m => m.ApartmentId, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(m => m.ApartmentId, new SelectList(Model.ApartmentsList, "ApartmentId", "Description", Model.ApartmentId).AddDefaultOption("--Chọn Cấp công trình--", "0"), new { @class = "form-control select2 select-onchange", style = "width: 100%" })
+                        <span id="ValidationMessageForApartmentId" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                 </div>
             </div>
             <div class="row-div">
                 <a href="/" title="Quay lại" class="btn-quaylai">Quay lại</a>
-                <span class="btn-ketqua btn-submit">Xem kết quả</span>
+                <input type="submit" name="SubmitAction" class="btn-ketqua" value="Xem kết quả" />
             </div>
         </form>
     </section>

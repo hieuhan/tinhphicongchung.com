@@ -29,13 +29,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="LoaiXe">LOẠI XE</label>
-                        @Html.DropDownListFor(m => m.VehicleTypeId, new SelectList(Model.VehicleTypesList, "VehicleTypeId", "Description", Model.VehicleTypeId).AddDefaultOption("--Chọn Loại Xe--", "0"), new { @class = "form-control select2", style = "width: 100%" })
-                        @Html.ValidationMessageFor(m => m.VehicleTypeId, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(m => m.VehicleTypeId, new SelectList(Model.VehicleTypesList, "VehicleTypeId", "Description", Model.VehicleTypeId).AddDefaultOption("--Chọn Loại Xe--", "0"), new { @class = "form-control select2 select-onchange", style = "width: 100%" })
+                        <span id="ValidationMessageForVehicleTypeId" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                     <div class="form-group">
                         <label for="Giaxemoi">GIÁ XE MỚI (VNĐ)</label>
                         @Html.TextBoxFor(x => x.Price, new { @class = "form-control input-amount currency", autocomplete = "off", placeholder = "Nhập giá xe mới" })
-                        @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+                        <span id="ValidationMessageForPrice" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                         <div style="font-style:italic; font-size: 13px;">
                             <span>(Ví dụ: Bạn cần kiểm tra phí công chứng chiếc xe mercedes E300 mà bạn đang sử dụng. Vậy bạn phải nhập giá mới của chiếc xe E300. Máy tính sẽ căn cứ vào ngày/tháng/năm đăng ký lần đầu để tính khấu hao giá trị còn lại)</span>
                         </div>
@@ -45,18 +45,18 @@
                     <label>NĂM ĐĂNG KÝ</label>
                     <div class="row">
                         <div class="col-xs-4">
-                            @Html.DropDownListFor(m => m.Day, new SelectList(Model.DaysList, "Id", "Name", Model.Day).AddDefaultOption("Ngày", "0"), new { @class = "form-control select2", style = "width: 100%" })
-                            @Html.ValidationMessageFor(m => m.Day, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(m => m.Day, new SelectList(Model.DaysList, "Id", "Name", Model.Day).AddDefaultOption("Ngày", "0"), new { @class = "form-control select2 select-onchange", style = "width: 100%" })
+                            <span id="ValidationMessageForDay" class="text-guide off"></span>
                         </div>
                         <div class="col-xs-4">
-                            @Html.DropDownListFor(m => m.Month, new SelectList(Model.MonthsList, "Id", "Name", Model.Month).AddDefaultOption("Tháng", "0"), new { @class = "form-control select2", style = "width: 100%" })
-                            @Html.ValidationMessageFor(m => m.Month, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(m => m.Month, new SelectList(Model.MonthsList, "Id", "Name", Model.Month).AddDefaultOption("Tháng", "0"), new { @class = "form-control select2 select-onchange", style = "width: 100%" })
+                            <span id="ValidationMessageForMonth" class="text-guide off"></span>
                         </div>
                         <div class="col-xs-4">
-                            @Html.DropDownListFor(m => m.Year, new SelectList(Model.VehicleRegistrationYearsList, "Value", "Value", Model.Year).AddDefaultOption("Năm", "0"), new { @class = "form-control select2", style = "width: 100%" })
-                            @Html.ValidationMessageFor(m => m.Year, "", new { @class = "text-danger" })
+                            @Html.DropDownListFor(m => m.Year, new SelectList(Model.VehicleRegistrationYearsList, "Value", "Value", Model.Year).AddDefaultOption("Năm", "0"), new { @class = "form-control select2 select-onchange", style = "width: 100%" })
+                            <span id="ValidationMessageForYear" class="text-guide off"></span>
                         </div>
-                        <div style="padding-left: 15px; padding-right: 15px; font-style:italic; font-size: 13px;">
+                        <div style="float:left; width:100%;padding-left: 15px; padding-right: 15px; font-style:italic; font-size: 13px;">
                             <span>(Thời gian đăng ký lần đầu của xe ô tô bạn cần kiểm tra phí công chứng)</span>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="row-div">
                 <a href="/" title="Quay lại" class="btn-quaylai go-back">Quay lại</a>
-                <span class="btn-ketqua btn-submit">Xem kết quả</span>
+                <input type="submit" name="SubmitAction" class="btn-ketqua" value="Xem kết quả" />
             </div>
         </form>
     </section>

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
 using tinhphicongchung.com.Areas.Admin.Models;
 using tinhphicongchung.com.Areas.Admin.Services.Attributes;
 using tinhphicongchung.com.Areas.Admin.Services.Extensions;
@@ -17,9 +13,6 @@ namespace tinhphicongchung.com.Areas.Admin.Controllers
     [AuthorizeRole]
     public class PageController : Controller
     {
-
-        private readonly string tableName = "Page";
-
         // GET: Admin/Page
 
         [HttpGet]

@@ -7,29 +7,29 @@ namespace tinhphicongchung.com.Models
     public class LandUseRightTransferContractVM : BaseViewModel
     {
         [Display(Name = "Quận/Huyện")]
-        [Range(1, int.MaxValue, ErrorMessage = "Vui lòng chọn {0}")]
+        //[Range(1, int.MaxValue, ErrorMessage = "Vui lòng chọn {0}")]
         public int DistrictId { get; set; }
 
         [Display(Name = "Phường/Xã")]
-        [Range(1, int.MaxValue, ErrorMessage = "Vui lòng chọn {0}")]
+        //[Range(1, int.MaxValue, ErrorMessage = "Vui lòng chọn {0}")]
         public int WardId { get; set; }
 
         [Display(Name = "Đường/Phố")]
-        [Range(1, int.MaxValue, ErrorMessage = "Vui lòng chọn {0}")]
+        //[Range(1, int.MaxValue, ErrorMessage = "Vui lòng chọn {0}")]
         public int StreetId { get; set; }
 
         [Display(Name = "Loại đất")]
-        [Range(1, byte.MaxValue, ErrorMessage = "Vui lòng chọn {0}")]
+        //[Range(1, byte.MaxValue, ErrorMessage = "Vui lòng chọn {0}")]
         public byte LandTypeId { get; set; }
 
         [Display(Name = "Vị trí")]
-        [Range(1, int.MaxValue, ErrorMessage = "Vui lòng chọn {0}")]
+        //[Range(1, int.MaxValue, ErrorMessage = "Vui lòng chọn {0}")]
         public int LocationId { get; set; }
 
         [Display(Name = "Diện tích Nhà")]
-        [Required(ErrorMessage = "Vui lòng nhập {0}")]
-        [RegularExpression("^[0-9]+\\.?[0-9]+$", ErrorMessage = "Vui lòng nhập {0} hợp lệ")]
-        [Range(1, double.MaxValue, ErrorMessage = "Vui lòng nhập {0} hợp lệ")]
+        //[Required(ErrorMessage = "Vui lòng nhập {0}")]
+        //[RegularExpression("^[0-9]+\\.?[0-9]+$", ErrorMessage = "Vui lòng nhập {0} hợp lệ")]
+        //[Range(1, double.MaxValue, ErrorMessage = "Vui lòng nhập {0} hợp lệ")]
         public string HouseArea { get; set; }
         public List<Districts> DistrictsList { get; set; }
         public List<Wards> WardsList { get; set; }

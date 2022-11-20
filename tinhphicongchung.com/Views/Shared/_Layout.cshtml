@@ -41,12 +41,13 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
     <!-- Your customer chat code -->
-    <div class="fb-customerchat"
-         attribution=setup_tool
-         page_id="109138344122175"
-         logged_in_greeting="Văn phòng công chứng giúp gì được cho Anh/chị ạ? Liên Hệ hotline: 0966227979"
-         logged_out_greeting="Văn phòng công chứng giúp gì được cho Anh/chị ạ? Liên Hệ hotline: 0966227979">
+    <div id="fb-customer-chat" class="fb-customerchat">
     </div>
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "107759592159450");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
     <!-- End -->
     <script src="/assets/libs/jquery/jquery.min.js" defer></script>
     <script src="/assets/libs/jquery-validate/jquery.validate.js" defer></script>

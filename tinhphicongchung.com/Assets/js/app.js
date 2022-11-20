@@ -15,7 +15,11 @@
         },
         OnSuccess: function (response, status, xhr) {
             if (response != null) {
-                $('span[id*="ValidationMessageFor"].text-danger').removeClass('text-danger').text('Bạn vui lòng chọn từ trên xuống dưới');
+                var spanMessageFor = $('span[id*="ValidationMessageFor"].text-danger');
+                spanMessageFor.removeClass('text-danger');
+                if (!spanMessageFor.hasClass('off')) {
+                    spanMessageFor.text('Bạn vui lòng chọn từ trên xuống dưới');
+                } else spanMessageFor.text('');
                 if (response.Message != null) {
                     if (!response.Completed && response.FieldValidationError != null) {
                         $('.row-ketqua').hide();
@@ -189,9 +193,9 @@
                         if (jQuery.fn.select2) {
                             $('select[name="WardId"].select2').select2();
                         }
-
-                        if (form) form.submit();
                     }
+
+                    if (form) form.submit();
                 })
                 .catch((error) => {
                     console.error(error)
@@ -251,13 +255,75 @@
                         if (jQuery.fn.select2) {
                             $('select[name="StreetId"].select2').select2();
                         }
-
-                        if (form) form.submit();
                     }
                 })
                 .catch((error) => {
                     console.error(error)
                 })
+
+            if (form) form.submit();
+        })
+        $(document).on('change', '.load-landtypes', function () {
+            var self = $(this), streetId = self.val() || 0,
+                select_landtypes = $('select[name="LandTypeId"]'),
+                select_locations = $('select[name="LocationId"]'),
+                form = self.closest('form');
+
+            select_landtypes.empty().append($('<option/>', {
+                'value': '0',
+                'text': '--Chọn loại đất--'
+            }))
+
+            select_locations.empty().append($('<option/>', {
+                'value': '0',
+                'text': '--Chọn Vị trí--'
+            }))
+
+            app.fetchData(
+                {
+                    url: '/api/landtypes/get.html',
+                    dataType: 'json',
+                    type: 'get',
+                    data:
+                    {
+                        streetId: streetId
+                    },
+                    beforeSend: function () {
+                        select_landtypes.find('option')
+                            .removeAttr('selected')
+                            .filter('[value="0"]')
+                            .text('Đang tải dữ liệu...')
+                            .attr('selected', true)
+                    },
+                    always: function () {
+                        select_landtypes.find('option')
+                            .removeAttr('selected')
+                            .filter('[value="0"]')
+                            .text('--Chọn loại đất--')
+                            .attr('selected', true);
+
+                        if (jQuery.fn.select2) {
+                            $('select[name="LandTypeId"].select2').select2();
+                        }
+                    }
+                })
+                .then((response) => {
+                    if (response != null && response.length > 0) {
+                        $.each(response, function (i, obj) {
+                            select_landtypes.append($('<option></option>').val(obj.Id)
+                                .html(obj.Name));
+                        });
+
+                        if (jQuery.fn.select2) {
+                            $('select[name="LandTypeId"].select2').select2();
+                        }
+                    }
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
+
+            if (form) form.submit();
         })
         $(document).on('change', 'select[name="LandTypeId"].load-locations', function () {
             var self = $(this), landTypeId = self.val() || 0,
@@ -483,7 +549,7 @@
         })
     },
     resetResult: function () {
-        //$('.row-ketqua').addClass('hidden');
+        $('.row-ketqua').addClass('hidden');
         $('.row-ketqua').find('.gia-tri-nha-theo-khung-gia-nha-nuoc').first().html('');
         $('.row-ketqua').find('.phi-cong-chung').first().html('');
     },

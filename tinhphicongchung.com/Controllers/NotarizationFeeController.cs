@@ -101,23 +101,34 @@ namespace tinhphicongchung.com.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Amount = model.Amount.Replace(",", "").Replace(".", "");
-                Contracts contracts = await Contracts.Static_LoanContract(double.Parse(model.Amount));
-
-                if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
+                if (!string.IsNullOrWhiteSpace(model.SubmitAction))
                 {
-                    return Json(new
+                    model.Amount = model.Amount.Replace(",", "").Replace(".", "");
+                    Contracts contracts = await Contracts.Static_LoanContract(double.Parse(model.Amount));
+
+                    if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
                     {
-                        Completed = true,
-                        Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
-                    }, JsonRequestBehavior.AllowGet);
+                        return Json(new
+                        {
+                            Completed = true,
+                            Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Completed = false,
+                            Message = contracts.ActionMessage
+                        }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {
                     return Json(new
                     {
-                        Completed = false,
-                        Message = contracts.ActionMessage
+                        Completed = true,
+                        Data = "NoAction",
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -213,23 +224,34 @@ namespace tinhphicongchung.com.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Amount = model.Amount.Replace(",", "").Replace(".", "");
-                Contracts contracts = await Contracts.Static_ContractAmendmentsAndSupplements(double.Parse(model.Amount));
-
-                if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
+                if (!string.IsNullOrWhiteSpace(model.SubmitAction))
                 {
-                    return Json(new
+                    model.Amount = model.Amount.Replace(",", "").Replace(".", "");
+                    Contracts contracts = await Contracts.Static_ContractAmendmentsAndSupplements(double.Parse(model.Amount));
+
+                    if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
                     {
-                        Completed = true,
-                        Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
-                    }, JsonRequestBehavior.AllowGet);
+                        return Json(new
+                        {
+                            Completed = true,
+                            Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Completed = false,
+                            Message = contracts.ActionMessage
+                        }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {
                     return Json(new
                     {
-                        Completed = false,
-                        Message = contracts.ActionMessage
+                        Completed = true,
+                        Data = "NoAction",
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -325,25 +347,36 @@ namespace tinhphicongchung.com.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Amount = model.Amount.Replace(",", "").Replace(".", "");
-                Contracts contracts = await Contracts.Static_EconomicCommercialInvestmentBusinessContract(double.Parse(model.Amount));
-
-                if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
+                if (!string.IsNullOrWhiteSpace(model.SubmitAction))
                 {
-                    return Json(new
+                    model.Amount = model.Amount.Replace(",", "").Replace(".", "");
+                    Contracts contracts = await Contracts.Static_EconomicCommercialInvestmentBusinessContract(double.Parse(model.Amount));
+
+                    if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
                     {
-                        Completed = true,
-                        Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
-                    }, JsonRequestBehavior.AllowGet);
+                        return Json(new
+                        {
+                            Completed = true,
+                            Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Completed = false,
+                            Message = contracts.ActionMessage
+                        }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {
                     return Json(new
                     {
-                        Completed = false,
-                        Message = contracts.ActionMessage
+                        Completed = true,
+                        Data = "NoAction",
                     }, JsonRequestBehavior.AllowGet);
-                }
+                }  
             }
 
             return Json(new
@@ -549,25 +582,36 @@ namespace tinhphicongchung.com.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Amount = model.Amount.Replace(",", "").Replace(".", "");
-                Contracts contracts = await Contracts.Static_MortgageContract(double.Parse(model.Amount));
-
-                if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
+                if (!string.IsNullOrWhiteSpace(model.SubmitAction))
                 {
-                    return Json(new
+                    model.Amount = model.Amount.Replace(",", "").Replace(".", "");
+                    Contracts contracts = await Contracts.Static_MortgageContract(double.Parse(model.Amount));
+
+                    if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
                     {
-                        Completed = true,
-                        Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
-                    }, JsonRequestBehavior.AllowGet);
+                        return Json(new
+                        {
+                            Completed = true,
+                            Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Completed = false,
+                            Message = contracts.ActionMessage
+                        }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {
                     return Json(new
                     {
-                        Completed = false,
-                        Message = contracts.ActionMessage
+                        Completed = true,
+                        Data = "NoAction",
                     }, JsonRequestBehavior.AllowGet);
-                }
+                }    
             }
 
             return Json(new
@@ -661,23 +705,34 @@ namespace tinhphicongchung.com.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Amount = model.Amount.Replace(",", "").Replace(".", "");
-                Contracts contracts = await Contracts.Static_DepositContract(double.Parse(model.Amount));
-
-                if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
+                if (!string.IsNullOrWhiteSpace(model.SubmitAction))
                 {
-                    return Json(new
+                    model.Amount = model.Amount.Replace(",", "").Replace(".", "");
+                    Contracts contracts = await Contracts.Static_DepositContract(double.Parse(model.Amount));
+
+                    if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
                     {
-                        Completed = true,
-                        Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
-                    }, JsonRequestBehavior.AllowGet);
+                        return Json(new
+                        {
+                            Completed = true,
+                            Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Completed = false,
+                            Message = contracts.ActionMessage
+                        }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {
                     return Json(new
                     {
-                        Completed = false,
-                        Message = contracts.ActionMessage
+                        Completed = true,
+                        Data = "NoAction",
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -773,23 +828,34 @@ namespace tinhphicongchung.com.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Amount = model.Amount.Replace(",", "").Replace(".", "");
-                Contracts contracts = await Contracts.Static_CapitalContributionContract(double.Parse(model.Amount));
-
-                if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
+                if (!string.IsNullOrWhiteSpace(model.SubmitAction))
                 {
-                    return Json(new
+                    model.Amount = model.Amount.Replace(",", "").Replace(".", "");
+                    Contracts contracts = await Contracts.Static_CapitalContributionContract(double.Parse(model.Amount));
+
+                    if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
                     {
-                        Completed = true,
-                        Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
-                    }, JsonRequestBehavior.AllowGet);
+                        return Json(new
+                        {
+                            Completed = true,
+                            Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Completed = false,
+                            Message = contracts.ActionMessage
+                        }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {
                     return Json(new
                     {
-                        Completed = false,
-                        Message = contracts.ActionMessage
+                        Completed = true,
+                        Data = "NoAction",
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
@@ -892,7 +958,69 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> ContractCapitalContributionByApartment(ContractCapitalContributionByApartmentVM model)
         {
-            if (ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(model.HouseArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.HouseArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var houseAreaMatch = Regex.Match(model.HouseArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!houseAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.ApartmentTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "ApartmentTypeId",
+                    Message = "Vui lòng chọn Loại Nhà"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.Year <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Year",
+                    Message = "Vui lòng chọn Năm xây dựng"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.ApartmentId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "ApartmentId",
+                    Message = "Vui lòng chọn Cấp công trình"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.HouseArea = model.HouseArea.Replace(",", ".");
 
@@ -915,12 +1043,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -1014,7 +1144,69 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> PurchaseAndSaleApartmentContract(PurchaseAndSaleApartmentContractVM model)
         {
-            if (ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(model.HouseArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.HouseArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var houseAreaMatch = Regex.Match(model.HouseArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!houseAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.ApartmentTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "ApartmentTypeId",
+                    Message = "Vui lòng chọn Loại Nhà"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.Year <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Year",
+                    Message = "Vui lòng chọn Năm xây dựng"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.ApartmentId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "ApartmentId",
+                    Message = "Vui lòng chọn Cấp công trình"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.HouseArea = model.HouseArea.Replace(",", ".");
 
@@ -1037,12 +1229,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -1137,7 +1331,69 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> ContractDonationApartment(ContractDonationApartmentVM model)
         {
-            if (ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(model.HouseArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.HouseArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var houseAreaMatch = Regex.Match(model.HouseArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!houseAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.ApartmentTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "ApartmentTypeId",
+                    Message = "Vui lòng chọn Loại Nhà"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.Year <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Year",
+                    Message = "Vui lòng chọn Năm xây dựng"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.ApartmentId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "ApartmentId",
+                    Message = "Vui lòng chọn Cấp công trình"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.HouseArea = model.HouseArea.Replace(",", ".");
 
@@ -1160,12 +1416,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -1259,7 +1517,69 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> DocumentDivideInheritanceApartment(DocumentDivideInheritanceApartmentVM model)
         {
-            if (ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(model.HouseArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.HouseArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var houseAreaMatch = Regex.Match(model.HouseArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!houseAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.ApartmentTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "ApartmentTypeId",
+                    Message = "Vui lòng chọn Loại Nhà"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.Year <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Year",
+                    Message = "Vui lòng chọn Năm xây dựng"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.ApartmentId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "ApartmentId",
+                    Message = "Vui lòng chọn Cấp công trình"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.HouseArea = model.HouseArea.Replace(",", ".");
 
@@ -1282,12 +1602,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -1381,7 +1703,89 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> LandUseRightTransferContract(LandUseRightTransferContractVM model)
         {
-            if (ModelState.IsValid)
+            if (model.DistrictId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "DistrictId",
+                    Message = "Vui lòng chọn Quận/Huyện"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.WardId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "WardId",
+                    Message = "Vui lòng chọn Phường/Xã"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.StreetId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "StreetId",
+                    Message = "Vui lòng chọn Đường/Phố"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandTypeId",
+                    Message = "Vui lòng chọn Loại đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LocationId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LocationId",
+                    Message = "Vui lòng chọn Vị trí"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.HouseArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.HouseArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var houseAreaMatch = Regex.Match(model.HouseArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!houseAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích Nhà hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.HouseArea = model.HouseArea.Replace(",", ".");
 
@@ -1404,12 +1808,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -1606,7 +2012,7 @@ namespace tinhphicongchung.com.Controllers
                 return Json(new
                 {
                     Completed = false,
-                    FieldValidationError = "LandArea",
+                    FieldValidationError = "HouseArea",
                     Message = "Vui lòng nhập Diện tích Nhà tối đa 9 ký tự"
                 }, JsonRequestBehavior.AllowGet);
             }
@@ -1871,7 +2277,7 @@ namespace tinhphicongchung.com.Controllers
                 return Json(new
                 {
                     Completed = false,
-                    FieldValidationError = "LandArea",
+                    FieldValidationError = "HouseArea",
                     Message = "Vui lòng nhập Diện tích Nhà tối đa 9 ký tự"
                 }, JsonRequestBehavior.AllowGet);
             }
@@ -2245,7 +2651,141 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> HouseLandSeparationContract(HouseLandSeparationContractVM model)
         {
-            if (ModelState.IsValid)
+            if (model.DistrictId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "DistrictId",
+                    Message = "Vui lòng chọn Quận/Huyện"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.WardId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "WardId",
+                    Message = "Vui lòng chọn Phường/Xã"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.StreetId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "StreetId",
+                    Message = "Vui lòng chọn Đường/Phố"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandTypeId",
+                    Message = "Vui lòng chọn Loại đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LocationId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LocationId",
+                    Message = "Vui lòng chọn Vị trí"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.LandArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var landAreaMatch = Regex.Match(model.LandArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!landAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.HouseArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.HouseArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var houseAreaMatch = Regex.Match(model.HouseArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!houseAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.Year <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Year",
+                    Message = "Vui lòng chọn Năm xây dựng"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandId",
+                    Message = "Vui lòng chọn Cấp công trình"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.LandArea = model.LandArea.Replace(",", ".");
                 model.HouseArea = model.HouseArea.Replace(",", ".");
@@ -2269,12 +2809,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -2368,7 +2910,90 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> ContractDivisionLandUseRight(ContractDivisionLandUseRightVM model)
         {
-            if (ModelState.IsValid)
+            if (model.DistrictId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "DistrictId",
+                    Message = "Vui lòng chọn Quận/Huyện"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.WardId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "WardId",
+                    Message = "Vui lòng chọn Phường/Xã"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.StreetId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "StreetId",
+                    Message = "Vui lòng chọn Đường/Phố"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandTypeId",
+                    Message = "Vui lòng chọn Loại đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LocationId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LocationId",
+                    Message = "Vui lòng chọn Vị trí"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.LandArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var landAreaMatch = Regex.Match(model.LandArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!landAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.LandArea = model.LandArea.Replace(",", ".");
 
@@ -2391,12 +3016,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -2496,7 +3123,141 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> ContractCapitalContributionByHouseLand(ContractCapitalContributionByHouseLandVM model)
         {
-            if (ModelState.IsValid)
+            if (model.DistrictId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "DistrictId",
+                    Message = "Vui lòng chọn Quận/Huyện"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.WardId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "WardId",
+                    Message = "Vui lòng chọn Phường/Xã"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.StreetId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "StreetId",
+                    Message = "Vui lòng chọn Đường/Phố"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandTypeId",
+                    Message = "Vui lòng chọn Loại đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LocationId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LocationId",
+                    Message = "Vui lòng chọn Vị trí"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.LandArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var landAreaMatch = Regex.Match(model.LandArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!landAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.HouseArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.HouseArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var houseAreaMatch = Regex.Match(model.HouseArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!houseAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.Year <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Year",
+                    Message = "Vui lòng chọn Năm xây dựng"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandId",
+                    Message = "Vui lòng chọn Cấp công trình"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.LandArea = model.LandArea.Replace(",", ".");
                 model.HouseArea = model.HouseArea.Replace(",", ".");
@@ -2520,12 +3281,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -2619,7 +3382,89 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> ContractCapitalContributionByLandUseRight(ContractCapitalContributionByLandUseRightVM model)
         {
-            if (ModelState.IsValid)
+            if (model.DistrictId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "DistrictId",
+                    Message = "Vui lòng chọn Quận/Huyện"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.WardId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "WardId",
+                    Message = "Vui lòng chọn Phường/Xã"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.StreetId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "StreetId",
+                    Message = "Vui lòng chọn Đường/Phố"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandTypeId",
+                    Message = "Vui lòng chọn Loại đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LocationId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LocationId",
+                    Message = "Vui lòng chọn Vị trí"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.LandArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var landAreaMatch = Regex.Match(model.LandArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!landAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.LandArea = model.LandArea.Replace(",", ".");
 
@@ -2642,12 +3487,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -2741,7 +3588,89 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> DocumentDivisionInheritanceLandUseRight(DocumentDivisionInheritanceLandUseRightVM model)
         {
-            if (ModelState.IsValid)
+            if (model.DistrictId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "DistrictId",
+                    Message = "Vui lòng chọn Quận/Huyện"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.WardId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "WardId",
+                    Message = "Vui lòng chọn Phường/Xã"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.StreetId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "StreetId",
+                    Message = "Vui lòng chọn Đường/Phố"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandTypeId",
+                    Message = "Vui lòng chọn Loại đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LocationId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LocationId",
+                    Message = "Vui lòng chọn Vị trí"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.LandArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var landAreaMatch = Regex.Match(model.LandArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!landAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.LandArea = model.LandArea.Replace(",", ".");
 
@@ -2764,12 +3693,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -2869,7 +3800,141 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> DocumentDivisionInheritanceHouseLand(DocumentDivisionInheritanceHouseLandVM model)
         {
-            if (ModelState.IsValid)
+            if (model.DistrictId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "DistrictId",
+                    Message = "Vui lòng chọn Quận/Huyện"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.WardId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "WardId",
+                    Message = "Vui lòng chọn Phường/Xã"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.StreetId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "StreetId",
+                    Message = "Vui lòng chọn Đường/Phố"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandTypeId",
+                    Message = "Vui lòng chọn Loại đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LocationId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LocationId",
+                    Message = "Vui lòng chọn Vị trí"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.LandArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var landAreaMatch = Regex.Match(model.LandArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!landAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandArea",
+                    Message = "Vui lòng nhập Diện tích Đất hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.HouseArea))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.HouseArea.Trim().Length > 9)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng tối đa 9 ký tự"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            var houseAreaMatch = Regex.Match(model.HouseArea, @"^[0-9]+\.?([0-9]+)?$", RegexOptions.IgnoreCase);
+
+            if (!houseAreaMatch.Success)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "HouseArea",
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng hợp lệ"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.Year <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Year",
+                    Message = "Vui lòng chọn Năm xây dựng"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.LandId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "LandId",
+                    Message = "Vui lòng chọn Cấp công trình"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.LandArea = model.LandArea.Replace(",", ".");
                 model.HouseArea = model.HouseArea.Replace(",", ".");
@@ -2893,12 +3958,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion
@@ -3007,7 +4074,57 @@ namespace tinhphicongchung.com.Controllers
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> VehicleSalesContract(VehicleSalesContractVM model)
         {
-            if (ModelState.IsValid)
+            if (model.VehicleTypeId <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "VehicleTypeId",
+                    Message = "Vui lòng chọn Loại xe"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Price))
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Price",
+                    Message = "Vui lòng nhập Giá xe mới (VNĐ)"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.Day <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Day",
+                    Message = "Vui lòng chọn Ngày đăng ký"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.Month <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Month",
+                    Message = "Vui lòng chọn Tháng đăng ký"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (model.Year <= 0)
+            {
+                return Json(new
+                {
+                    Completed = false,
+                    FieldValidationError = "Year",
+                    Message = "Vui lòng chọn Năm đăng ký"
+                }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (!string.IsNullOrWhiteSpace(model.SubmitAction))
             {
                 model.Price = model.Price.Replace(",", "").Replace(".", "");
 
@@ -3032,12 +4149,14 @@ namespace tinhphicongchung.com.Controllers
                     }, JsonRequestBehavior.AllowGet);
                 }
             }
-
-            return Json(new
+            else
             {
-                Completed = false,
-                Message = "Quý khách vui lòng thử lại sau."
-            }, JsonRequestBehavior.AllowGet);
+                return Json(new
+                {
+                    Completed = true,
+                    Data = "NoAction",
+                }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         #endregion

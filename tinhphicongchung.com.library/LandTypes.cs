@@ -72,7 +72,7 @@ namespace tinhphicongchung.com.library
             return resultVar;
         }
 
-        public async Task<List<LandTypes>> GetListDisplay()
+        public async Task<List<LandTypes>> GetListDisplay(int streetId)
         {
             List<LandTypes> resultVar = new List<LandTypes>();
             try
@@ -82,7 +82,7 @@ namespace tinhphicongchung.com.library
                     if (connection.State == ConnectionState.Closed)
                         connection.Open();
 
-                    resultVar = await connection.QueryAsync<LandTypes>(string.Format("SELECT * FROM [dbo].[LandTypes] WHERE [LandTypeId] IN (SELECT [LandTypeId] FROM [dbo].[Locations] WHERE [StatusId] = {0}) ORDER BY [DisplayOrder],[Name]", ConstantHelper.StatusIdActivated)) as List<LandTypes>;
+                    resultVar = await connection.QueryAsync<LandTypes>(string.Format("SELECT * FROM [dbo].[LandTypes] WHERE [LandTypeId] IN (SELECT [LandTypeId] FROM [dbo].[Locations] WHERE ([StreetId] = {0}) AND ([StatusId] = {1})) ORDER BY [DisplayOrder],[Name]", streetId, ConstantHelper.StatusIdActivated)) as List<LandTypes>;
                 }
             }
             catch (Exception ex)
@@ -104,10 +104,10 @@ namespace tinhphicongchung.com.library
             return await landTypes.GetList();
         }
 
-        public static async Task<List<LandTypes>> Static_GetListDisplay()
+        public static async Task<List<LandTypes>> Static_GetListDisplay(int streetId)
         {
             LandTypes landTypes = new LandTypes();
-            return await landTypes.GetListDisplay();
+            return await landTypes.GetListDisplay(streetId);
         }
 
         public static LandTypes Static_Get(byte landTypeId, List<LandTypes> list)

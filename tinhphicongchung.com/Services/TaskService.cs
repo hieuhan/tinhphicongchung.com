@@ -26,14 +26,13 @@ namespace tinhphicongchung.com.Services
                     var vehicleRegistrationYearsTask = VehicleRegistrationYears.Static_GetList(ConstantHelper.StatusIdActivated);
                     var constructionLevelsTask = ConstructionLevels.Static_GetList(ConstantHelper.StatusIdActivated);
                     var landsTask = Lands.Static_GetList(ConstantHelper.StatusIdActivated);
-                    var landTypesTask = LandTypes.Static_GetListDisplay();
                     var apartmentsTask = Apartments.Static_GetList(ConstantHelper.StatusIdActivated);
                     var apartmentTypesTask = ApartmentTypes.Static_GetList();
                     var districtsTask = Districts.Static_GetListDisplay();
 
                     await Task.WhenAll(hitCounterTask, menuItemsTask, seosTask,
                         pageTask, yearBuildTask, vehicleTypesTask, vehicleRegistrationYearsTask,
-                        constructionLevelsTask, landsTask, landTypesTask, apartmentsTask, apartmentTypesTask, districtsTask);
+                        constructionLevelsTask, landsTask, apartmentsTask, apartmentTypesTask, districtsTask);
 
 
                     CacheVM model = new CacheVM
@@ -47,7 +46,6 @@ namespace tinhphicongchung.com.Services
                         VehicleRegistrationYearsList = vehicleRegistrationYearsTask.Result, 
                         ConstructionLevelsList = constructionLevelsTask.Result,
                         LandsList = landsTask.Result,
-                        LandTypesList = landTypesTask.Result,
                         ApartmentsList = apartmentsTask.Result,
                         ApartmentTypesList = apartmentTypesTask.Result,
                         DistrictsList = districtsTask.Result

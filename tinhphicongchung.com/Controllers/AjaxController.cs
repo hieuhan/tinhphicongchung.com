@@ -90,5 +90,25 @@ namespace tinhphicongchung.com.Controllers
 
             return Json(resultVar, JsonRequestBehavior.AllowGet);
         }
+
+        public async Task<JsonResult> GetLandTypesBy(int streetId = 0)
+        {
+            List<ObjectJsonVM> resultVar = new List<ObjectJsonVM>();
+
+            if (streetId > 0)
+            {
+                var landTypesList = await LandTypes.Static_GetListDisplay(streetId);
+                if (landTypesList.IsAny())
+                {
+                    resultVar.AddRange(landTypesList.Select(x => new ObjectJsonVM()
+                    {
+                        Id = x.LandTypeId,
+                        Name = x.Description
+                    }));
+                }
+            }
+
+            return Json(resultVar, JsonRequestBehavior.AllowGet);
+        }
     }
 }

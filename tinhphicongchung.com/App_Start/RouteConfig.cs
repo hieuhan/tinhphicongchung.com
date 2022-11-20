@@ -219,6 +219,13 @@ namespace tinhphicongchung.com
                 namespaces: new[] { "tinhphicongchung.com.Controllers" }
             );
 
+            routes.MapRoute(
+                "Ajax_GetLandTypessBy",
+                "api/landtypes/get.html",
+                new { controller = "Ajax", action = "GetLandTypesBy", },
+                namespaces: new[] { "tinhphicongchung.com.Controllers" }
+            );
+
             #endregion
 
             routes.MapRoute(

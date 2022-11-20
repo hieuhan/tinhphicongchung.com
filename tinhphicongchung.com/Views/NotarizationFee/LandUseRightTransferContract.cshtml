@@ -30,17 +30,17 @@
                     <div class="form-group">
                         <label>Quận Huyện</label>
                         @Html.DropDownListFor(m => m.DistrictId, new SelectList(Model.DistrictsList, "DistrictId", "Description", Model.DistrictId).AddDefaultOption("--Chọn Quận Huyện--", "0"), new { @class = "form-control load-wards select2", style = "width: 100%" })
-                        @Html.ValidationMessageFor(m => m.DistrictId, "", new { @class = "text-danger" })
+                        <span id="ValidationMessageForDistrictId" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                     <div class="form-group">
                         <label>Phường Xã</label>
                         @Html.DropDownListFor(m => m.WardId, new SelectList(Model.WardsList, "WardId", "Description", Model.WardId).AddDefaultOption("--Chọn Phường Xã--", "0"), new { @class = "form-control load-streets select2", style = "width: 100%" })
-                        @Html.ValidationMessageFor(m => m.WardId, "", new { @class = "text-danger" })
+                        <span id="ValidationMessageForWardId" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                     <div class="form-group">
                         <label>Đường Phố</label>
-                        @Html.DropDownListFor(m => m.StreetId, new SelectList(Model.StreetsList, "WardId", "Description", Model.StreetId).AddDefaultOption("--Chọn Đường Phố--", "0"), new { @class = "form-control load-locations select2", style = "width: 100%" })
-                        @Html.ValidationMessageFor(m => m.StreetId, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(m => m.StreetId, new SelectList(Model.StreetsList, "StreetId", "Description", Model.StreetId).AddDefaultOption("--Chọn Đường Phố--", "0"), new { @class = "form-control load-landtypes select2", style = "width: 100%" })
+                        <span id="ValidationMessageForStreetId" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                 </div>
 
@@ -48,23 +48,23 @@
                     <div class="form-group">
                         <label>Loại đất</label>
                         @Html.DropDownListFor(m => m.LandTypeId, new SelectList(Model.LandTypesList, "LandTypeId", "Description", Model.LandTypeId).AddDefaultOption("--Chọn loại đất--", "0"), new { @class = "form-control load-locations select2", style = "width: 100%" })
-                        @Html.ValidationMessageFor(m => m.LandTypeId, "", new { @class = "text-danger" })
+                        <span id="ValidationMessageForLandTypeId" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                     <div class="form-group">
                         <label>Vị trí</label>
-                        @Html.DropDownListFor(m => m.LocationId, new SelectList(Model.LocationTypesList, "LocationId", "Description", Model.LocationId).AddDefaultOption("--Chọn Vị trí--", "0"), new { @class = "form-control select2", style = "width: 100%" })
-                        @Html.ValidationMessageFor(m => m.LocationId, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(m => m.LocationId, new SelectList(Model.LocationTypesList, "LocationId", "Description", Model.LocationId).AddDefaultOption("--Chọn Vị trí--", "0"), new { @class = "form-control select2 select-onchange", style = "width: 100%" })
+                        <span id="ValidationMessageForLocationId" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                     <div class="form-group">
                         <label>Diện tích đất/m2</label>
                         @Html.TextBoxFor(x => x.HouseArea, new { @class = "form-control double", autocomplete = "off", title = "Nhập Diện tích đất", placeholder = "Nhập Diện tích đất" })
-                        @Html.ValidationMessageFor(m => m.HouseArea, "", new { @class = "text-danger" })
+                        <span id="ValidationMessageForHouseArea" class="text-guide">Bạn vui lòng chọn từ trên xuống dưới</span>
                     </div>
                 </div>
             </div>
             <div class="row-div">
                 <a href="/" title="Quay lại" class="btn-quaylai">Quay lại</a>
-                <span class="btn-ketqua btn-submit">Xem kết quả</span>
+                <input type="submit" name="SubmitAction" class="btn-ketqua" value="Xem kết quả" />
             </div>
         </form>
     </section>
