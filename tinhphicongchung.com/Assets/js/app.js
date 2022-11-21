@@ -72,6 +72,9 @@
         }
     },
     events: function () {
+        $('form').submit(function () {
+            return true;
+        });
         $(document).on('change', '.select-onchange', function (e) {
             var form = $(this).closest('form');
             if (form) form.submit();
@@ -544,12 +547,12 @@
         $(document).on('click', '.go-back', function (event) {
             window.history.go(-1);
         })
-        $(document).on('click', '.btn-ketqua', function () {
-            app.resetResult();
-        })
+        //$(document).on('click', '.btn-ketqua', function () {
+        //    app.resetResult();
+        //})
     },
     resetResult: function () {
-        $('.row-ketqua').addClass('hidden');
+        $('.row-ketqua').hide();
         $('.row-ketqua').find('.gia-tri-nha-theo-khung-gia-nha-nuoc').first().html('');
         $('.row-ketqua').find('.phi-cong-chung').first().html('');
     },

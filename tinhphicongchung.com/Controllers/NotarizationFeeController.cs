@@ -1971,7 +1971,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "LandArea",
-                    Message = "Vui lòng nhập Diện tích sàn xây dựng"
+                    Message = "Vui lòng nhập Diện tích Nhà"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -1981,7 +1981,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "LandArea",
-                    Message = "Vui lòng nhập Diện tích sàn xây dựng tối đa 9 ký tự"
+                    Message = "Vui lòng nhập Diện tích Nhà tối đa 9 ký tự"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -1993,7 +1993,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "LandArea",
-                    Message = "Vui lòng nhập Diện tích sàn xây dựng hợp lệ"
+                    Message = "Vui lòng nhập Diện tích Nhà hợp lệ"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -2003,7 +2003,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "HouseArea",
-                    Message = "Vui lòng nhập Diện tích Nhà"
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -2013,7 +2013,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "HouseArea",
-                    Message = "Vui lòng nhập Diện tích Nhà tối đa 9 ký tự"
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng tối đa 9 ký tự"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -2025,7 +2025,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "HouseArea",
-                    Message = "Vui lòng nhập Diện tích Nhà hợp lệ"
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng hợp lệ"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -2236,7 +2236,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "LandArea",
-                    Message = "Vui lòng nhập Diện tích sàn xây dựng"
+                    Message = "Vui lòng nhập Diện tích Đất"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -2246,7 +2246,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "LandArea",
-                    Message = "Vui lòng nhập Diện tích sàn xây dựng tối đa 9 ký tự"
+                    Message = "Vui lòng nhập Diện tích Đất tối đa 9 ký tự"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -2258,7 +2258,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "LandArea",
-                    Message = "Vui lòng nhập Diện tích sàn xây dựng hợp lệ"
+                    Message = "Vui lòng nhập Diện tích Đất hợp lệ"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -2268,7 +2268,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "HouseArea",
-                    Message = "Vui lòng nhập Diện tích Nhà"
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -2278,7 +2278,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "HouseArea",
-                    Message = "Vui lòng nhập Diện tích Nhà tối đa 9 ký tự"
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng tối đa 9 ký tự"
                 }, JsonRequestBehavior.AllowGet);
             }
 
@@ -2290,7 +2290,7 @@ namespace tinhphicongchung.com.Controllers
                 {
                     Completed = false,
                     FieldValidationError = "HouseArea",
-                    Message = "Vui lòng nhập Diện tích Nhà hợp lệ"
+                    Message = "Vui lòng nhập Diện tích sàn xây dựng hợp lệ"
                 }, JsonRequestBehavior.AllowGet);
             }
 
