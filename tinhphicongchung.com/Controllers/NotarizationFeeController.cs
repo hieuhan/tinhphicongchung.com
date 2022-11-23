@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Web.Helpers;
 using System.Web.Mvc;
 using tinhphicongchung.com.helper;
 using tinhphicongchung.com.library;
@@ -470,23 +468,34 @@ namespace tinhphicongchung.com.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.Amount = model.Amount.Replace(",", "").Replace(".", "");
-                Contracts contracts = await Contracts.Static_HouseLeaseContract(int.Parse(model.RentalPeriod), double.Parse(model.Amount));
-
-                if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
+                if (!string.IsNullOrWhiteSpace(model.SubmitAction))
                 {
-                    return Json(new
+                    model.Amount = model.Amount.Replace(",", "").Replace(".", "");
+                    Contracts contracts = await Contracts.Static_HouseLeaseContract(int.Parse(model.RentalPeriod), double.Parse(model.Amount));
+
+                    if (contracts != null && !string.IsNullOrWhiteSpace(contracts.ActionStatus) && contracts.ActionStatus.Equals(ConstantHelper.ActionStatusSuccess))
                     {
-                        Completed = true,
-                        Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
-                    }, JsonRequestBehavior.AllowGet);
+                        return Json(new
+                        {
+                            Completed = true,
+                            Cb = Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("$('.row-ketqua').find('.phi-cong-chung').first().html('{0:0,0}');$('.row-ketqua').removeClass('hidden');if($(window).scrollTop() > 150) $(\"html, body\").animate({{ scrollTop: $('.section-shadow').offset().top }});", contracts.NotarizationFee)))
+                        }, JsonRequestBehavior.AllowGet);
+                    }
+                    else
+                    {
+                        return Json(new
+                        {
+                            Completed = false,
+                            Message = contracts.ActionMessage
+                        }, JsonRequestBehavior.AllowGet);
+                    }
                 }
                 else
                 {
                     return Json(new
                     {
-                        Completed = false,
-                        Message = contracts.ActionMessage
+                        Completed = true,
+                        Data = "NoAction",
                     }, JsonRequestBehavior.AllowGet);
                 }
             }

@@ -75,6 +75,13 @@
         $('form').submit(function () {
             return true;
         });
+        $(document.body).on('keyup', '.currency, .number, .double', function (event) {
+            var key = (event.keyCode || event.which);
+            if (key == 13 || key == 3) {
+                var inputSubmit = $('input[type="submit"][name="SubmitAction"]').first();
+                if (inputSubmit) inputSubmit.click();
+            }
+        });
         $(document).on('change', '.select-onchange', function (e) {
             var form = $(this).closest('form');
             if (form) form.submit();
@@ -538,11 +545,14 @@
         })
         var timeOut;
         $(document).on('keyup', '.currency, .number, .double', function (event) {
-            clearTimeout(timeOut);
-            var self = $(this), form = self.closest('form');
-            timeOut = setTimeout(function () {
-                form.submit();
-            }, 600);
+            var key = (event.keyCode || event.which);
+            if (key != 13 && key != 3) {
+                clearTimeout(timeOut);
+                var self = $(this), form = self.closest('form');
+                timeOut = setTimeout(function () {
+                    form.submit();
+                }, 600);
+            }
         })
         $(document).on('click', '.go-back', function (event) {
             window.history.go(-1);
